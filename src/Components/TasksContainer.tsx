@@ -66,7 +66,6 @@ const{currentUser} = useAuth();
             <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="In-Process" data={taskdata?.filter((item: any)=>item.state === "In-Process")}/>
             <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="Completed" data={taskdata?.filter((item: any)=>item.state === "Completed")}/>
             </DragDropContext>
-
         </MainContainer>
     </CenterTasksContainer>
   )
