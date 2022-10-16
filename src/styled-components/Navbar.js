@@ -8,8 +8,9 @@ export const NavContainerLeft = styled.div`
 `
 
 export const NavContainerTop = styled.div`
-    padding: 0 15px;
-    width: 96.5vw;
+    padding-left:15px;
+    padding-right: 30px;
+    width: "100%";
     height: 70px;
     display: flex;
     justify-content: space-between;
@@ -25,4 +26,13 @@ export const NavLogo = styled.img`
 
 export const TopNavRight = styled.div`
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        object-fit: cover;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+    }
 `
