@@ -1,9 +1,37 @@
 import React from 'react'
-import {NavContainerTop,NavLogo,TopNavRight} from "../styled-components/Navbar";
 import Logo from '../Assets/logo.png'
+import styled from "styled-components";
 
 import {MdKeyboardArrowDown} from 'react-icons/md'
+const NavContainerTop = styled.div`
+    padding-left:15px;
+    padding-right: 30px;
+    width: "100%";
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: ${props=>props.theme.primaryColor};
 
+
+`
+
+const NavLogo = styled.img`
+    height: 75%;
+`
+
+const TopNavRight = styled.div`
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        object-fit: cover;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+    }
+`
 export default function Navbar() {
   return (
     <>

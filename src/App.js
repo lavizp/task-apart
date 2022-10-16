@@ -1,7 +1,7 @@
 import './app.css'
 import { ThemeProvider } from "styled-components";
 import TasksContainer from './Components/TasksContainer';
-import { NavContainerLeft } from './styled-components/Navbar';
+import NavbarLeft from './Components/NavbarLeft';
 import { MainContainer } from './styled-components/MainContainer';
 import Navbar from './Components/Navbar';
 function App() {
@@ -15,7 +15,7 @@ function App() {
 <ThemeProvider theme={theme}>
   <Navbar/>
   <MainContainer>
-    <NavContainerLeft/>
+    <NavbarLeft/>
     <TasksContainer/>
   </MainContainer>
   </ThemeProvider>
