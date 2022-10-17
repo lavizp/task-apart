@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CenterTasksContainer = styled.div`
-    width: 80%;
+    width: 70%;
     height: "100%";
     padding-left: 20px;
     background-color: ${props=> props.theme.backgroundColor};

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {MdOutlineDone} from "react-icons/md"
 
 const TaskContainer = styled.div`
-    width: 180px;
+    width: 160px;
     min-height: 150px;
     max-height: 300px;
     background-color: ${props=> props.theme.primaryColor};
@@ -44,10 +44,16 @@ const Title = styled.p`
 const TitleContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 90px;
+    min-height: 90px;
     align-items: start;
     justify-content: space-between;
+    gap: 10px;
+    img{
+        width: 100%;
+        height: 100px;
+        border-radius: 8px;
 
+    }
 
 `
 
@@ -65,11 +71,12 @@ const DetailsContainer = styled.div`
 `
 
 
-export default function Task() {
+export default function Task({image}) {
   return (
     <TaskContainer>
         <TitleContainer>
-
+            {image &&  <img src = "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="yahoo"></img>}
+       
         <TaskCatogery>
             <p>Design</p>
         </TaskCatogery>

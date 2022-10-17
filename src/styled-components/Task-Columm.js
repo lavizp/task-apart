@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const TaskColumnStyle = styled.div`
-    width: 230px;
+    width: 190px;
     min-height: 500px;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@ export const TaskColumnStyle = styled.div`
 `
 
 export const TaskTitle = styled.div`
-    width: 180px;
+    width: 160px;
     height: 54px;
     border-radius: 10px;
     background-color: ${props=> props.theme.primaryColor};

@@ -10,7 +10,9 @@ export default function TaskColumn({title}) {
             <p>{title}</p>
             <BsPlusCircleFill/>
         </TaskTitle>
+        <Task image={"https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"}/>
         <Task/>
+
     </TaskColumnStyle>
   )
 }
