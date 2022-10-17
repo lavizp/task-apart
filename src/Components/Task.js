@@ -75,11 +75,12 @@ export default function Task({image}) {
   return (
     <TaskContainer>
         <TitleContainer>
-            {image &&  <img src = "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="yahoo"></img>}
        
         <TaskCatogery>
             <p>Design</p>
         </TaskCatogery>
+        {image &&  <img src = "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="yahoo"></img>}
+
         <Title main>Making Design</Title>
         <Title>Create Website for Me</Title>
         </TitleContainer>

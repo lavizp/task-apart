@@ -4,6 +4,7 @@ import TasksContainer from './Components/TasksContainer';
 import NavbarLeft from './Components/NavbarLeft';
 import { MainContainer } from './styled-components/MainContainer';
 import Navbar from './Components/Navbar';
+import NotesTab from './Components/NotesTab';
 function App() {
 
   const theme = {
@@ -15,8 +16,9 @@ function App() {
 <ThemeProvider theme={theme}>
   <Navbar/>
   <MainContainer>
-    <NavbarLeft/>
+    <NavbarLeft id={2}/>
     <TasksContainer/>
+    <NotesTab/>
   </MainContainer>
   </ThemeProvider>
   );

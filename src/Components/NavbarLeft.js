@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {CiViewTimeline} from "react-icons/ci"
 import {SiHomebridge} from "react-icons/si"
@@ -9,7 +9,7 @@ import {TbSubtask} from "react-icons/tb"
 const NavContainerLeft = styled.div`
     height: 100vh;
     padding-top: 100px;
-    width: 85px;
+    width: 5%;
     background-color: ${props=>props.theme.primaryColor};
     display: flex;
     flex-direction: column;
@@ -35,20 +35,31 @@ const NavItem = styled.div`
 
 
 
-export default function NavbarLeft() {
+export default function NavbarLeft({id}) {
+    const [isSelected, setSelected] = useState([false, false, false ,false]);
+
+
+    const resetAll=()=>{
+        let newSelected = [false,false,false,false];
+        newSelected[id] = true;
+        setSelected(newSelected);
+    }
+    useEffect(()=>{
+        resetAll();
+    },[])
   return (
     <NavContainerLeft>
-        <NavItem>
-            <SiHomebridge size={35}/>
+        <NavItem onClick selected={isSelected[0] && "selected"}>
+            <SiHomebridge size={32}/>
         </NavItem>
-        <NavItem>
-            <CiViewTimeline size={35}/>
+        <NavItem onClick selected={isSelected[1] && "selected"}>
+            <CiViewTimeline size={32}/>
         </NavItem>
-        <NavItem selected>
-            <TbSubtask size={35}/>
+        <NavItem onClick selected={isSelected[2] && "selected"}>
+            <TbSubtask size={32}/>
         </NavItem>
-        <NavItem>
-            <AiFillSetting size={35}/>
+        <NavItem onClick selected={isSelected[3] && "selected"}>
+            <AiFillSetting size={32}/>
         </NavItem>
 
     </NavContainerLeft>
