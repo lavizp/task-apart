@@ -6,7 +6,7 @@ export default function TasksContainer() {
   return (
     <CenterTasksContainer>
         <h1>Tasks:</h1>
-        <MainContainer gap>
+        <MainContainer gap="30px">
             <TaskColumn title="BackLog"/>
             <TaskColumn title="To-Do"/>
             <TaskColumn title="Process"/>

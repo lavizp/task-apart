@@ -4,7 +4,7 @@ import {MdOutlineDone} from "react-icons/md"
 
 const TaskContainer = styled.div`
     width: 180px;
-    min-height: 190px;
+    min-height: 150px;
     max-height: 300px;
     background-color: ${props=> props.theme.primaryColor};
     margin-top: 30px;

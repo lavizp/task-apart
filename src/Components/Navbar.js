@@ -7,7 +7,7 @@ const NavContainerTop = styled.div`
     padding-left:15px;
     padding-right: 30px;
     width: "100%";
-    height: 70px;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
