@@ -2,6 +2,8 @@ import React from 'react'
 import styled from "styled-components";
 import {MdOutlineDone} from "react-icons/md"
 
+import { Draggable } from 'react-beautiful-dnd';
+
 const TaskContainer = styled.div`
     width: 160px;
     min-height: 150px;
@@ -71,24 +73,31 @@ const DetailsContainer = styled.div`
 `
 
 
-export default function Task({image}) {
+export default function Task({id,image, title, description,catogery,index}) {
   return (
-    <TaskContainer>
+    <Draggable key={id} draggableId={id} index={index}>
+        {(provided)=>(
+        <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} >
+
+        <TaskContainer >
         <TitleContainer>
        
         <TaskCatogery>
-            <p>Design</p>
+            <p>{catogery}</p>
         </TaskCatogery>
         {image &&  <img src = "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="yahoo"></img>}
 
-        <Title main>Making Design</Title>
-        <Title>Create Website for Me</Title>
+        <Title main>{title}</Title>
+        <Title>{description}</Title>
         </TitleContainer>
         <DetailsContainer>
             <p>Aug 20, 2021</p>
             <MdOutlineDone size={20} color="#768396"/>
         </DetailsContainer>
 
-    </TaskContainer>
+        </TaskContainer>
+        </div>
+        )}
+    </Draggable>
   )
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {BsPlusCircleFill} from 'react-icons/bs'
 import Task from './Task'
 
-
+import { Droppable } from 'react-beautiful-dnd'
 const TaskColumnStyle = styled.div`
     width: 190px;
     min-height: 500px;
@@ -31,16 +31,27 @@ const TaskTitle = styled.div`
     }
 
 `
-export default function TaskColumn({title}) {
+export default function TaskColumn({title, data}) {
   return (
     <TaskColumnStyle>
         <TaskTitle>
             <p>{title}</p>
             <BsPlusCircleFill/>
         </TaskTitle>
-        <Task image={"https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"}/>
-        <Task/>
+        <Droppable droppableId={title}>
+            {(provided)=>(
+                    <div  {...provided.droppableProps} ref={provided.innerRef}>
+                        {data.map((item,index)=>{
+                            return(
+                                <Task key ={item.id}id={item.id} title={item.title} catogery={item.catogery} description={item.description} image={item.image} index={index}/>
+                            )
+                        })}
+                        {provided.placeholder}
+                    </div>
+                    )
 
+            }
+        </Droppable>
     </TaskColumnStyle>
   )
 }

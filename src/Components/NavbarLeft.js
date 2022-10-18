@@ -49,16 +49,16 @@ export default function NavbarLeft({id}) {
     },[])
   return (
     <NavContainerLeft>
-        <NavItem onClick selected={isSelected[0] && "selected"}>
+        <NavItem selected={isSelected[0] && "selected"}>
             <SiHomebridge size={32}/>
         </NavItem>
-        <NavItem onClick selected={isSelected[1] && "selected"}>
+        <NavItem selected={isSelected[1] && "selected"}>
             <CiViewTimeline size={32}/>
         </NavItem>
-        <NavItem onClick selected={isSelected[2] && "selected"}>
+        <NavItem selected={isSelected[2] && "selected"}>
             <TbSubtask size={32}/>
         </NavItem>
-        <NavItem onClick selected={isSelected[3] && "selected"}>
+        <NavItem selected={isSelected[3] && "selected"}>
             <AiFillSetting size={32}/>
         </NavItem>
 
