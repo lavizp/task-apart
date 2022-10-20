@@ -5,14 +5,14 @@ import Task from './Task'
 
 import { Droppable } from 'react-beautiful-dnd'
 const TaskColumnStyle = styled.div`
-    width: 190px;
-    min-height: 500px;
+    width: 230px;
+    min-height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    border-radius: 10px;
 
-
+    border: ${props=> props.border==="grey"? "1px solid grey":"none"}
 `
 
 const TaskTitle = styled.div`
@@ -31,9 +31,9 @@ const TaskTitle = styled.div`
     }
 
 `
-export default function TaskColumn({title, data}) {
+export default function TaskColumn({title, data, isDragging}) {
   return (
-    <TaskColumnStyle>
+    <TaskColumnStyle border={isDragging? "grey": "none"}>
         <TaskTitle>
             <p>{title}</p>
             <BsPlusCircleFill/>

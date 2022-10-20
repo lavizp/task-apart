@@ -23,44 +23,47 @@ const taskdata = {
     {
       id: "0",
       catogery: "design",
-      title: "Making Stuff",
-      description: "Unga Bunga Suii"
+      title: "Designing UI",
+      description: "UI for task-apart"
+
     },
   ],
   "To-Do": [
     {
       id: "1",
-      catogery: "design",
-      title: "Making Stuff",
-      description: "Unga Bunga Suii"
+      catogery: "code",
+      title: "Drag-Drop Feature",
+      description: "Make Tasks Draggable",
+      image: "asd"
     },
     {
       id: "2",
-      catogery: "design",
-      title: "Making Stuff",
-      description: "Unga Bunga Suii"
+      catogery: "research",
+      title: "Research Redux",
+      description: "Learn how Redux Works",
+
     },
   ],
   "In-Process": [
     {
       id: "3",
-      catogery: "design",
-      title: "Making Stuff",
-      description: "Unga Bunga Suii"
+      catogery: "code",
+      title: "Navbar",
+      description: "Create Navbar for task-apart"
     },
     {
       id: "4",
       catogery: "design",
-      title: "Making Stuff",
-      description: "Unga Bunga Suii"
+      title: "Making Design",
+      description: "Design Posts"
     },
   ],
   "Completed": [
     {
       id: "5",
-      catogery: "design",
-      title: "Making Stuff",
-      description: "Unga Bunga Suii"
+      catogery: "social",
+      title: "Meet Obama",
+      description: "Test Task"
     },
   ]
 
@@ -68,29 +71,32 @@ const taskdata = {
 export default function TasksContainer() {
 
   const [taskStateData, setTaskStateData] = useState(taskdata);
+  const [isDragging, setIsDragging] = useState(false);
   function handleOnDragEnd (result){
-    console.log(result);
-    const items = taskStateData;
-    console.log(items[result.source.droppableId]);
+    if(!result.destination) return;
+    let items = taskStateData;
 
-    const [currentData] = items[result.source.droppableId].splice(result.source.index, 1);
-    items[result.destination.droppableId].splice(items[result.destination.droppableId.index] , 0,currentData);
+    let [currentData] = items[result.source.droppableId].splice(result.source.index, 1);
+    items[result.destination.droppableId].splice(result.destination.index , 0, currentData);
 
     setTaskStateData(items);
+    setIsDragging(false);
+
+  }
+  function handleOnDragStart()
+  {
+    setIsDragging(true);
   }
 
-  useEffect(()=>{
-    console.log(taskStateData);
-  },[taskStateData])
   return (
     <CenterTasksContainer>
         <h1>Tasks:</h1>
         <MainContainer gap="30px">
-          <DragDropContext onDragEnd={handleOnDragEnd}>
-            <TaskColumn title="BackLog" data={taskStateData['BackLog']}/>
-            <TaskColumn title="To-Do" data={taskStateData['To-Do']}/>
-            <TaskColumn title="In-Process" data={taskStateData['In-Process']}/>
-            <TaskColumn title="Completed" data={taskStateData['Completed']}/>
+          <DragDropContext onDragEnd={handleOnDragEnd} onDragStart={handleOnDragStart}>
+            <TaskColumn isDragging={isDragging} title="BackLog" data={taskStateData['BackLog']}/>
+            <TaskColumn isDragging={isDragging} title="To-Do" data={taskStateData['To-Do']}/>
+            <TaskColumn isDragging={isDragging} title="In-Process" data={taskStateData['In-Process']}/>
+            <TaskColumn isDragging={isDragging} title="Completed" data={taskStateData['Completed']}/>
             </DragDropContext>
 
         </MainContainer>
