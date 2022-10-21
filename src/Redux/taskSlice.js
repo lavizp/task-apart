@@ -57,8 +57,13 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     add_task: (state, newTask) => {
-
-      state.tasks['BackLog'].push(newTask.payload);
+        let dataToAdd = {
+                id: "9",
+                catogery: newTask.payload.catogery,
+                title: newTask.payload.title,
+                description: newTask.payload.description, 
+        }
+      state.tasks[newTask.payload.state].push(dataToAdd);
     },
     remove_task: (state) => {
       //state.value -= 1

@@ -80,8 +80,10 @@ export default function AddTask({displayAddTask}) {
                 catogery: catogeryRef.current.value,
                 title: titleRef.current.value,
                 description: descRef.current.value,
+                state: stateRef.current.value
             }
         ));
+        displayAddTask();
     }
 
   return (

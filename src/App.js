@@ -6,7 +6,7 @@ import { MainContainer } from './styled-components/MainContainer';
 import Navbar from './Components/Navbar';
 import NotesTab from './Components/NotesTab';
 import AddTask from './Components/AddTask';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 function App() {
   const {tasks} = useSelector((state)=> state.taskSlice)
@@ -23,7 +23,6 @@ function App() {
   return (
 
 <ThemeProvider theme={theme}>
-  {JSON.stringify(tasks)}
   <Navbar/>
   {isAddTaskVisible&&<AddTask displayAddTask={displayAddTask}/>}
   <MainContainer>
