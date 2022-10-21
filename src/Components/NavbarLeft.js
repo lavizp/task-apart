@@ -7,7 +7,7 @@ import {AiFillSetting} from "react-icons/ai"
 import {TbSubtask} from "react-icons/tb"
 
 const NavContainerLeft = styled.div`
-    height: 100vh;
+    height: "100%";
     padding-top: 100px;
     width: 5%;
     background-color: ${props=>props.theme.primaryColor};

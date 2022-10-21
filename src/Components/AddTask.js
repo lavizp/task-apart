@@ -35,7 +35,7 @@ const AddTaskContainer = styled.div`
 const Input = styled.input`
     width: 98%;
     border: none;
-    height: ${props=>  props.height? props.height: "30px"};
+    line-height: ${props=>  props.height? props.height: "30px"};
     background-color: ${props=>props.theme.primaryColor};
     margin-bottom: 10px;
     color: white;
