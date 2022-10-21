@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import styled,{css} from 'styled-components'
+import React, { useRef } from 'react'
+import styled from 'styled-components'
 
 const Overlay = styled.div`
     position: fixed;
@@ -9,14 +9,8 @@ const Overlay = styled.div`
     right: 0;
     background: rgba(0, 0, 0, 0.7);
     transition: opacity 500ms;
-    ${props=>props.hidden === true && css`
-        display: none;
-    `}
-    ${props=>props.hidden === false && css`
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    `}
+    display: flex;
+    justify-content: flex-end;
 
 
 `
@@ -30,6 +24,10 @@ const AddTaskContainer = styled.div`
     position: relative;
     transition: all 1s ease-in-out;
     color: white;
+
+    button{
+        height: 30px;
+    }
 `
 
 const Input = styled.input`
@@ -42,25 +40,64 @@ const Input = styled.input`
     color: white;
 `
 
+const Select = styled.select`
+    width: 90%;
+    border: none;
+    height: ${props=>  props.height? props.height: "30px"};
+    background-color: ${props=>props.theme.primaryColor};
+    margin-bottom: 10px;
+    border-bottom: ${props=> props.title === true? "2px solid grey": "none"};
+    color: white;
+`
+const Button = styled.button`
+    width: 90%;
+    border: none;
+    height: 90px;
+    background-color: ${props=>props.theme.primaryColor};
+    margin-top: 10px;
+    color: white;
+    cursor: pointer;
+`
+
 const InputContainer = styled.form`
     display: flex;
     flex-direction: column;
 `
 
-export default function AddTask({hidden = false}) {
-    const [isHidden, setIsHidden] = useState(hidden);
+export default function AddTask({displayAddTask}) {
+    const titleRef = useRef();
+    const descRef = useRef();
+    const catogeryRef = useRef();
+    const stateRef = useRef();
+    const addTaskData = ()=>{
+        
+    }
   return (
-    <Overlay hidden={isHidden}>
+    <Overlay>
         <AddTaskContainer>
-            <div style={{display: "flex", justifyContent: "space-between", paddingRight: "10px"}}>
+            <div style={{display: "flex", justifyContent: "space-between",alignItems:"center", paddingRight: "10px"}}>
                 <h1>AddTask:</h1>
-                <button onClick={()=>setIsHidden(true)}>X</button>
+                <button onClick={displayAddTask}>X</button>
             </div>
             <InputContainer>
-                Title: <Input title = "true"></Input>
-                Description: <Input></Input>
-                Catogery:<Input></Input>
-                State:<Input></Input>
+                Title: <Input title = "true" ref={titleRef} required></Input>
+                Description: <Input height={"100px"} ref={descRef} required></Input>
+                State:
+                <Select ref={stateRef}>
+                    <option value="BackLog" >BackLog</option>
+                    <option value="To-Do" >To-Do</option>
+                    <option value="In-Process" >In-Process</option>
+                    <option value="Completed" >Completed</option>
+                </Select>
+                Catogery:<Select ref={catogeryRef}>
+                    <option value="Research">Research</option>
+                    <option value="Design">Design</option>
+                    <option value="In-Process">In-Process</option>
+                    <option value="Completed">Completed</option>
+                </Select>
+                Image: <input title = "true" ref={titleRef} type="file"></input>
+
+                <Button>Submit</Button>
             </InputContainer>
 
         </AddTaskContainer>

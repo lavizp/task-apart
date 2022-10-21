@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import {BsPlusCircleFill} from 'react-icons/bs'
 import Task from './Task'
+import AddTask from './AddTask'
 
 import { Droppable } from 'react-beautiful-dnd'
 const TaskColumnStyle = styled.div`

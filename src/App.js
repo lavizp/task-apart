@@ -6,24 +6,27 @@ import { MainContainer } from './styled-components/MainContainer';
 import Navbar from './Components/Navbar';
 import NotesTab from './Components/NotesTab';
 import AddTask from './Components/AddTask';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 function App() {
+  const {tasks} = useSelector((state)=> state.taskSlice)
+  useEffect(()=>{
+    console.log(tasks);
+  },[])
 
   const theme = {
     primaryColor: "#1E1F25",
     backgroundColor: "#131517"
   }
-  const[isAddTaskVisible, setAddTask] = useState(true);
+  const[isAddTaskVisible, setAddTask] = useState(false);
   function displayAddTask(){
-    setAddTask(false);
-    console.log("here");
+    setAddTask(prev =>!prev);
   }
   return (
 
 <ThemeProvider theme={theme}>
-  <button onClick={displayAddTask}>asd</button>
   <Navbar/>
-  <AddTask hidden={isAddTaskVisible}/>
+  {isAddTaskVisible&&<AddTask displayAddTask={displayAddTask}/>}
   <MainContainer>
     <NavbarLeft id={2}/>
     <TasksContainer displayAddTask={displayAddTask}/>
