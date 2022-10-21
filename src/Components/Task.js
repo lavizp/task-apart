@@ -39,7 +39,7 @@ const Title = styled.p`
     font-weight: 500;
     font-size: ${props=> props.main? "17px": "15px"};
     line-height: 17px;
-    color: ${props=> props.main? "white": "##768396"};
+    color: ${props=> props.main? "white": "#768396"};
     margin: 0;
 
 `

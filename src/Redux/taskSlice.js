@@ -58,7 +58,7 @@ export const taskSlice = createSlice({
   reducers: {
     add_task: (state, newTask) => {
 
-      state.tasks['Completed'].push(newTask);
+      state.tasks['BackLog'].push(newTask.payload);
     },
     remove_task: (state) => {
       state.value -= 1

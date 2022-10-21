@@ -23,8 +23,8 @@ const NavContainerLeft = styled.div`
 const NavItem = styled.div`
     height: 50px;
     width: 50px;
-    background-color: ${props=> props.selected? "#5051F9": ""};
-    color: ${props=> props.selected? "white": "#5F6388"};
+    background-color: ${props=> props.selected === "selected"? "#5051F9": ""};
+    color: ${props=> props.selected === "selected"? "white": "#5F6388"};
     border-radius: 14px;
     display: flex;
     flex-direction: column;

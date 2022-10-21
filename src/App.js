@@ -10,9 +10,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 function App() {
   const {tasks} = useSelector((state)=> state.taskSlice)
-  useEffect(()=>{
-    console.log(tasks);
-  },[])
+
 
   const theme = {
     primaryColor: "#1E1F25",
@@ -29,7 +27,7 @@ function App() {
   {isAddTaskVisible&&<AddTask displayAddTask={displayAddTask}/>}
   <MainContainer>
     <NavbarLeft id={2}/>
-    <TasksContainer displayAddTask={displayAddTask}/>
+    <TasksContainer displayAddTask={displayAddTask} taskdata={tasks}/>
     <NotesTab/>
   </MainContainer>
   </ThemeProvider>

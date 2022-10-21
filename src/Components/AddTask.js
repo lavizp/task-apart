@@ -1,5 +1,7 @@
 import React, { useRef } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { add_task } from '../Redux/taskSlice'
 
 const Overlay = styled.div`
     position: fixed;
@@ -19,7 +21,7 @@ const AddTaskContainer = styled.div`
     padding: 20px;
     background: ${props=> props.theme.backgroundColor};
     border-radius: 5px;
-    width: 60%;
+    width: 50%;
     height: 100%;
     position: relative;
     transition: all 1s ease-in-out;
@@ -31,17 +33,16 @@ const AddTaskContainer = styled.div`
 `
 
 const Input = styled.input`
-    width: 90%;
+    width: 98%;
     border: none;
     height: ${props=>  props.height? props.height: "30px"};
     background-color: ${props=>props.theme.primaryColor};
     margin-bottom: 10px;
-    border-bottom: ${props=> props.title === true? "2px solid grey": "none"};
     color: white;
 `
 
 const Select = styled.select`
-    width: 90%;
+    width: 98%;
     border: none;
     height: ${props=>  props.height? props.height: "30px"};
     background-color: ${props=>props.theme.primaryColor};
@@ -50,9 +51,8 @@ const Select = styled.select`
     color: white;
 `
 const Button = styled.button`
-    width: 90%;
+    width: 98%;
     border: none;
-    height: 90px;
     background-color: ${props=>props.theme.primaryColor};
     margin-top: 10px;
     color: white;
@@ -69,9 +69,21 @@ export default function AddTask({displayAddTask}) {
     const descRef = useRef();
     const catogeryRef = useRef();
     const stateRef = useRef();
-    const addTaskData = ()=>{
-        
+
+    const dispatch = useDispatch();
+
+    const addTaskData = (e)=>{
+        e.preventDefault();
+        dispatch(add_task(
+            {
+                id: "9",
+                catogery: catogeryRef.current.value,
+                title: titleRef.current.value,
+                description: descRef.current.value,
+            }
+        ));
     }
+
   return (
     <Overlay>
         <AddTaskContainer>
@@ -80,7 +92,7 @@ export default function AddTask({displayAddTask}) {
                 <button onClick={displayAddTask}>X</button>
             </div>
             <InputContainer>
-                Title: <Input title = "true" ref={titleRef} required></Input>
+                Title: <Input ref={titleRef} required></Input>
                 Description: <Input height={"100px"} ref={descRef} required></Input>
                 State:
                 <Select ref={stateRef}>
@@ -95,9 +107,9 @@ export default function AddTask({displayAddTask}) {
                     <option value="In-Process">In-Process</option>
                     <option value="Completed">Completed</option>
                 </Select>
-                Image: <input title = "true" ref={titleRef} type="file"></input>
+                Image: <input title = "true" type="file"></input>
 
-                <Button>Submit</Button>
+                <Button onClick={(e)=>addTaskData(e)}>Submit</Button>
             </InputContainer>
 
         </AddTaskContainer>
