@@ -4,6 +4,9 @@ import TaskColumn from './TaskColumn'
 import styled from "styled-components";
 
 import { DragDropContext } from 'react-beautiful-dnd';
+import { useDispatch } from 'react-redux';
+
+import { update_task } from '../Redux/taskSlice';
 
 const CenterTasksContainer = styled.div`
     width: 70%;
@@ -21,16 +24,12 @@ const CenterTasksContainer = styled.div`
 
 export default function TasksContainer({displayAddTask, taskdata}) {
 
-  const [taskStateData, setTaskStateData] = useState(taskdata);
   const [isDragging, setIsDragging] = useState(false);
+
+  const diapatch = useDispatch();
+
   function handleOnDragEnd (result){
-    if(!result.destination) return;
-    let items = taskStateData;
-
-    let [currentData] = items[result.source.droppableId].splice(result.source.index, 1);
-    items[result.destination.droppableId].splice(result.destination.index , 0, currentData);
-
-    setTaskStateData(items);
+    diapatch(update_task(result));
     setIsDragging(false);
 
   }
@@ -44,10 +43,10 @@ export default function TasksContainer({displayAddTask, taskdata}) {
         <h1>Tasks:</h1>
         <MainContainer gap="30px">
           <DragDropContext onDragEnd={handleOnDragEnd} onDragStart={handleOnDragStart}>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="BackLog" data={taskStateData['BackLog']}/>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="To-Do" data={taskStateData['To-Do']}/>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="In-Process" data={taskStateData['In-Process']}/>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="Completed" data={taskStateData['Completed']}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="BackLog" data={taskdata['BackLog']}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="To-Do" data={taskdata['To-Do']}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="In-Process" data={taskdata['In-Process']}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="Completed" data={taskdata['Completed']}/>
             </DragDropContext>
 
         </MainContainer>

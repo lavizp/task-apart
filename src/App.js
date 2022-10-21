@@ -23,6 +23,7 @@ function App() {
   return (
 
 <ThemeProvider theme={theme}>
+  {JSON.stringify(tasks)}
   <Navbar/>
   {isAddTaskVisible&&<AddTask displayAddTask={displayAddTask}/>}
   <MainContainer>

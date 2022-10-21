@@ -61,15 +61,19 @@ export const taskSlice = createSlice({
       state.tasks['BackLog'].push(newTask.payload);
     },
     remove_task: (state) => {
-      state.value -= 1
+      //state.value -= 1
     },
     update_task: (state, action) => {
-      state.value += action.payload
+        if(!action.payload.destination) return;
+        let items = state.tasks;
+        let [currentData] = items[action.payload.source.droppableId].splice(action.payload.source.index, 1);
+        items[action.payload.destination.droppableId].splice(action.payload.destination.index , 0, currentData);
+
+        state.tasks = items;
     },
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { add_task, remove_task, update_task } = taskSlice.actions
 
 export default taskSlice.reducer
