@@ -68,7 +68,7 @@ const taskdata = {
   ]
 
 };
-export default function TasksContainer() {
+export default function TasksContainer({displayAddTask}) {
 
   const [taskStateData, setTaskStateData] = useState(taskdata);
   const [isDragging, setIsDragging] = useState(false);
@@ -93,10 +93,10 @@ export default function TasksContainer() {
         <h1>Tasks:</h1>
         <MainContainer gap="30px">
           <DragDropContext onDragEnd={handleOnDragEnd} onDragStart={handleOnDragStart}>
-            <TaskColumn isDragging={isDragging} title="BackLog" data={taskStateData['BackLog']}/>
-            <TaskColumn isDragging={isDragging} title="To-Do" data={taskStateData['To-Do']}/>
-            <TaskColumn isDragging={isDragging} title="In-Process" data={taskStateData['In-Process']}/>
-            <TaskColumn isDragging={isDragging} title="Completed" data={taskStateData['Completed']}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="BackLog" data={taskStateData['BackLog']}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="To-Do" data={taskStateData['To-Do']}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="In-Process" data={taskStateData['In-Process']}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="Completed" data={taskStateData['Completed']}/>
             </DragDropContext>
 
         </MainContainer>

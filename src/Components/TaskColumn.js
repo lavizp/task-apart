@@ -31,12 +31,12 @@ const TaskTitle = styled.div`
     }
 
 `
-export default function TaskColumn({title, data, isDragging}) {
+export default function TaskColumn({title, data, isDragging,displayAddTask}) {
   return (
     <TaskColumnStyle border={isDragging? "grey": "none"}>
         <TaskTitle>
             <p>{title}</p>
-            <BsPlusCircleFill/>
+            <BsPlusCircleFill onClick={displayAddTask}/>
         </TaskTitle>
         <Droppable droppableId={title}>
             {(provided)=>(
