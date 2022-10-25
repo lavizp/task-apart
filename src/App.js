@@ -1,12 +1,7 @@
 import './app.css'
 import { ThemeProvider } from "styled-components";
-import TasksContainer from './Components/TasksContainer';
-import NavbarLeft from './Components/NavbarLeft';
-import { MainContainer } from './styled-components/MainContainer';
-import Navbar from './Components/Navbar';
-import NotesTab from './Components/NotesTab';
-import AddTask from './Components/AddTask';
 import { useState } from 'react';
+import TaskPage from './Pages/TaskPage';
 import { useSelector } from 'react-redux';
 function App() {
   const {tasks} = useSelector((state)=> state.taskSlice)
@@ -16,20 +11,11 @@ function App() {
     primaryColor: "#1E1F25",
     backgroundColor: "#131517"
   }
-  const[isAddTaskVisible, setAddTask] = useState(false);
-  function displayAddTask(){
-    setAddTask(prev =>!prev);
-  }
+
   return (
 
 <ThemeProvider theme={theme}>
-  <Navbar/>
-  {isAddTaskVisible&&<AddTask displayAddTask={displayAddTask}/>}
-  <MainContainer>
-    <NavbarLeft id={2}/>
-    <TasksContainer displayAddTask={displayAddTask} taskdata={tasks}/>
-    <NotesTab/>
-  </MainContainer>
+    <TaskPage />
   </ThemeProvider>
   );
 }
