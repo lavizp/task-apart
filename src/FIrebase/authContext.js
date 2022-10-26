@@ -1,72 +1,54 @@
-import React, { useContext, useEffect, useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut as fbSignOut,
-  updateProfile,
-} from "firebase/auth";
-import db from "./firebase";
-import { addDoc, doc, setDoc } from "firebase/firestore";
+import db from "../FIrebase/firebase";
+import { doc, setDoc } from "firebase/firestore";
+import React, { useContext, useState, useEffect } from "react";
 
+import { auth } from "../FIrebase/firebase"
 const AuthContext = React.createContext();
+
 export function useAuth() {
   return useContext(AuthContext);
 }
 
-export default function AuthProvider({ children }) {
+export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [componentMounted, setComponentMounted] = useState(false);
-  const auth = getAuth();
-  useEffect(() => {
-    const user = window.localStorage.getItem("user");
-    console.log(JSON.parse(user));
-    user && setCurrentUser(JSON.parse(user));
-    setComponentMounted(true);
-  }, []);
+  const [isLoading, setIsLoading] = useState(true);
+  const [userData, setUserData] = useState({});
 
-  async function signup(name, username, email, password, userPhoto = null) {
-    createUserWithEmailAndPassword(auth, email, password).then(() => {
-      updateProfile(auth.currentUser, {
-        displayName: name,
-        photoURL: userPhoto,
-      });
-
-      setDoc(doc(db, "users", auth.currentUser.uid), {
-        name,
-        email,
-        username,
-        userPhoto,
-        posts: [],
-        stories: [],
-        likedPosts: [],
-        comments: [],
-      });
+  async function signUp(email, password) {
+    await auth.createUserWithEmailAndPassword(email, password);
+    setDoc(doc(db, "users", auth.currentUser.uid), {
+      email,
+      password,
+      cartData: [],
     });
   }
-  function signin(email, password) {
-    return signInWithEmailAndPassword(auth, email, password);
+
+  function login(email, password) {
+    return auth.signInWithEmailAndPassword(email, password);
   }
   function signOut() {
-    return fbSignOut(auth);
+    console.log("Sign Out");
+    window.location.reload(false);
+    return auth.signOut(auth);
   }
+
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user);
-      window.localStorage.setItem("user", JSON.stringify(user));
+      setIsLoading(false);
     });
+    return unsubscribe;
   }, []);
 
   const value = {
     currentUser,
-    signup,
-    signin,
+    login,
+    signUp,
     signOut,
   };
   return (
     <AuthContext.Provider value={value}>
-      {componentMounted && children}
+      {!isLoading && children}
     </AuthContext.Provider>
   );
 }
