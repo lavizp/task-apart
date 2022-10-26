@@ -1,10 +1,10 @@
 import './app.css'
+import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from "styled-components";
-import { useState } from 'react';
 import TaskPage from './Pages/TaskPage';
-import { useSelector } from 'react-redux';
+import LoginPage from "./Pages/LoginPage"
+import SignupPage from "./Pages/SignupPage"
 function App() {
-  const {tasks} = useSelector((state)=> state.taskSlice)
 
 
   const theme = {
@@ -15,7 +15,12 @@ function App() {
   return (
 
 <ThemeProvider theme={theme}>
-    <TaskPage />
+  <Routes>
+    <Route path ="/login" element={<LoginPage/>}/>
+    <Route path ="/signup" element={<SignupPage/>}/>
+    <Route path ="/" element={<TaskPage/>}/>
+
+  </Routes>
   </ThemeProvider>
   );
 }
