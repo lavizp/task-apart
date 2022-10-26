@@ -36,6 +36,15 @@ export const RightContainer = styled.img`
   border-radius: 0 10px 10px 0;
 
 `
+
+export const Form = styled.form`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+`
 export const Input = styled.input`
   width: 80%;
   height: 40px;
@@ -54,6 +63,7 @@ export const Button = styled.button`
   color: white;
   font-size: 20px;
   margin-top: 30px;
+  cursor: pointer;
 `
 
 export const LineText = styled.h4`

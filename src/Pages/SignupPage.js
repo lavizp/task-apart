@@ -16,7 +16,7 @@ export default function SignupPage() {
         <p>Already Have an Account? <a href='/login'>Login</a> </p>
 
       </LeftContainer>
-      <RightContainer src='https://img.freepik.com/free-vector/evening-cloudy-sky-purple-background-with-group-cumulus-cirrus-clouds-flat-cartoon-illustration_1284-62768.jpg?w=2000'>
+      <RightContainer src='https://img.freepik.com/free-vector/space-game-background-neon-night-alien-landscape_107791-1624.jpg?w=2000'>
       </RightContainer>
     </Container>
   </Background>
