@@ -20,7 +20,16 @@ export function AuthProvider({ children }) {
       username,
       email,
       password,
-      tasks: [],
+      tasks: {
+    "BackLog": [
+      ],
+      "To-Do": [
+      ],
+      "In-Process": [
+      ],
+      "Completed": [
+      ]
+  },
     });
   }
 
