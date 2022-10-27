@@ -1,6 +1,6 @@
 import { collection, doc, getDoc } from "firebase/firestore";
-import { database } from "./config";
+import db from "../FIrebase/firebase";
 
-export default function getUserData(uid) {
-  return getDoc(doc(database, "users", uid));
+export default async function getUserData(uid) {
+  return await getDoc(doc(db, "users", uid));
 }

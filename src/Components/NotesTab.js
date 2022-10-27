@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const NotesContainer = styled.div`
-    height: "100%";
+    height: 100vh;
     width: 25%;
     background-color: ${props=> props.theme.primaryColor};
     h2{

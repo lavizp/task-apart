@@ -41,7 +41,7 @@ export default function TaskColumn({title, data, isDragging,displayAddTask}) {
         <Droppable droppableId={title}>
             {(provided)=>(
                     <div  {...provided.droppableProps} ref={provided.innerRef}>
-                        {data.map((item,index)=>{
+                        {data?.map((item,index)=>{
                             return(
                                 <Task key ={item.id} id={item.id} title={item.title} catogery={item.catogery} description={item.description} image={item.image} index={index}/>
                             )
