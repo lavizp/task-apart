@@ -14,6 +14,7 @@ export default function SignupPage() {
       window.alert("Passwords Do Not Match");
       return;
     }
+    signUp(usernameRef.current.value, emailRef.current.value, passwordRef.current.value);
   }
   return (
     <Background>

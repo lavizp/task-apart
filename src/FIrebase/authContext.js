@@ -14,12 +14,13 @@ export function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState({});
 
-  async function signUp(email, password) {
+  async function signUp(username, email, password) {
     await auth.createUserWithEmailAndPassword(email, password);
     setDoc(doc(db, "users", auth.currentUser.uid), {
+      username,
       email,
       password,
-      cartData: [],
+      tasks: [],
     });
   }
 

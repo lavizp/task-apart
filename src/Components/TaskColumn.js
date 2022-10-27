@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {BsPlusCircleFill} from 'react-icons/bs'
 import Task from './Task'
-import AddTask from './AddTask'
 
 import { Droppable } from 'react-beautiful-dnd'
 const TaskColumnStyle = styled.div`
@@ -44,7 +43,7 @@ export default function TaskColumn({title, data, isDragging,displayAddTask}) {
                     <div  {...provided.droppableProps} ref={provided.innerRef}>
                         {data.map((item,index)=>{
                             return(
-                                <Task key ={item.id}id={item.id} title={item.title} catogery={item.catogery} description={item.description} image={item.image} index={index}/>
+                                <Task key ={item.id} id={item.id} title={item.title} catogery={item.catogery} description={item.description} image={item.image} index={index}/>
                             )
                         })}
                         {provided.placeholder}

@@ -1,11 +1,13 @@
 import React, { useRef } from 'react'
 import { Background, Container, LeftContainer, RightContainer, Input, Button, LineText, Form} from '../styled-components/AuthStyles'
-
+import { useAuth } from '../FIrebase/authContext'
 export default function LoginPage() {
+  const{login} = useAuth();
   const emailRef = useRef()
   const passwordRef = useRef()
-  const onSubmit =()=>{
-    console.log(emailRef);
+  const handleSubmit =(e)=>{
+    e.preventDefault();
+    login(emailRef.current.value, passwordRef.current.value)
   }
   return (
     <Background>
@@ -16,7 +18,7 @@ export default function LoginPage() {
 
             <Input placeholder='Email' ref={emailRef} type="email" required/>
             <Input placeholder='Password'ref={passwordRef} type="password" required/>
-            <Button onClick={onSubmit} type='submit'>Login</Button>
+            <Button onClick={(e)=>{handleSubmit(e)}} type='submit'>Login</Button>
           </Form>
           <LineText>OR</LineText>
           <p>Do not have an account? <a href='/signup'>Sign Up</a> </p>

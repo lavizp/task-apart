@@ -6,7 +6,9 @@ import {MainContainer} from '../styled-components/MainContainer'
 import TasksContainer from '../Components/TasksContainer'
 import NotesTab from '../Components/NotesTab'
 import AddTask from '../Components/AddTask'
+import { useAuth } from '../FIrebase/authContext'
 export default function TaskPage() {
+  const{currentUser} = useAuth();
   const {tasks} = useSelector((state)=> state.taskSlice)
 
     const[isAddTaskVisible, setAddTask] = useState(false)
