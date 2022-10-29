@@ -1,21 +1,24 @@
-import db from "../FIrebase/firebase";
+import db from "./firebase";
 import { doc, setDoc } from "firebase/firestore";
+import firebase from "firebase/compat/app"
 import React, { useContext, useState, useEffect } from "react";
 
-import { auth } from "../FIrebase/firebase"
-const AuthContext = React.createContext();
+import { auth } from "./firebase"
+const AuthContext = React.createContext<any | null>(null);
+
 
 export function useAuth() {
   return useContext(AuthContext);
 }
 
-export function AuthProvider({ children }) {
+export function AuthProvider({ children }: any) {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState({});
 
-  async function signUp(username, email, password) {
+  async function signUp(username: string, email: string, password: string) {
     await auth.createUserWithEmailAndPassword(email, password);
+    if(auth.currentUser)
     setDoc(doc(db, "users", auth.currentUser.uid), {
       username,
       email,
@@ -33,24 +36,24 @@ export function AuthProvider({ children }) {
     });
   }
 
-  function login(email, password) {
+  function login(email:string, password:string) {
     return auth.signInWithEmailAndPassword(email, password);
   }
   function signOut() {
     console.log("Sign Out");
-    window.location.reload(false);
-    return auth.signOut(auth);
+    window.location.reload();
+    return auth.signOut();
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user: any) => {
       setCurrentUser(user);
       setIsLoading(false);
     });
     return unsubscribe;
   }, []);
 
-  const value = {
+  const value : any= {
     currentUser,
     login,
     signUp,

@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { Background, Container, LeftContainer, RightContainer, Input, Button, LineText, Form} from '../styled-components/AuthStyles'
 import { useAuth } from '../FIrebase/authContext'
 export default function LoginPage() {
-  const{login} = useAuth();
+  const{ login } = useAuth();
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
   const handleSubmit =(e: any)=>{
