@@ -43,10 +43,10 @@ export default function TasksContainer({displayAddTask, taskdata}) {
         <h1>Tasks:</h1>
         <MainContainer gap="30px">
           <DragDropContext onDragEnd={handleOnDragEnd} onDragStart={handleOnDragStart}>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="BackLog" data={taskdata['BackLog']}/>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="To-Do" data={taskdata['To-Do']}/>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="In-Process" data={taskdata['In-Process']}/>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="Completed" data={taskdata['Completed']}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="BackLog" data={taskdata.filter((item)=>item.state === "BackLog")}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="To-Do" data={taskdata.filter((item)=>item.state === "To-Do")}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="In-Process" data={taskdata.filter((item)=>item.state === "In-Process")}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="Completed" data={taskdata.filter((item)=>item.state === "Completed")}/>
             </DragDropContext>
 
         </MainContainer>

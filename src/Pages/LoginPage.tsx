@@ -3,10 +3,11 @@ import { Background, Container, LeftContainer, RightContainer, Input, Button, Li
 import { useAuth } from '../FIrebase/authContext'
 export default function LoginPage() {
   const{login} = useAuth();
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const handleSubmit =(e)=>{
+  const emailRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
+  const handleSubmit =(e: any)=>{
     e.preventDefault();
+    if(emailRef.current && passwordRef.current)
     login(emailRef.current.value, passwordRef.current.value)
   }
   return (
@@ -18,7 +19,7 @@ export default function LoginPage() {
 
             <Input placeholder='Email' ref={emailRef} type="email" required/>
             <Input placeholder='Password'ref={passwordRef} type="password" required/>
-            <Button onClick={(e)=>{handleSubmit(e)}} type='submit'>Login</Button>
+            <Button onClick={(e: any)=>{handleSubmit(e)}} type='submit'>Login</Button>
           </Form>
           <LineText>OR</LineText>
           <p>Do not have an account? <a href='/signup'>Sign Up</a> </p>

@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import { useAuth } from '../FIrebase/authContext'
 
 const initialState = {
-  tasks: {
+  tasks: [
 
-  },
+  ],
 }
 
 export const taskSlice = createSlice({
@@ -12,12 +12,12 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     init_data: (state, newTask)=>{
-      state.tasks = newTask.payload.value;
+      state.tasks = newTask.payload
     },
     add_task: (state, newTask) => {
         let dataToAdd = {
                 state: newTask.payload.state,
-                id: newTask.payload.id,
+                id: state.tasks.length,
                 catogery: newTask.payload.catogery,
                 title: newTask.payload.title,
                 description: newTask.payload.description, 
@@ -30,9 +30,7 @@ export const taskSlice = createSlice({
     update_task: (state, action) => {
         if(!action.payload.destination) return;
         let items = state.tasks;
-        let [currentData] = items[action.payload.source.droppableId].splice(action.payload.source.index, 1);
-        items[action.payload.destination.droppableId].splice(action.payload.destination.index , 0, currentData);
-
+        items[action.payload.source.index].state = action.payload.destination.droppableId;
         state.tasks = items;
     },
   },
