@@ -20,7 +20,7 @@ function App() {
   }
   useEffect(()=>{
     const dataFetch = async(userID: string)=>{
-      let userData = await getUserData(userID);
+      let userData: any = await getUserData(userID);
       console.log(userData.data().tasks);
       dispatch(init_data(
         userData.data().tasks

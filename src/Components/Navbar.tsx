@@ -1,5 +1,4 @@
 import React from 'react'
-import Logo from '../Assets/logo.png'
 import styled from "styled-components";
 
 import {MdKeyboardArrowDown} from 'react-icons/md'

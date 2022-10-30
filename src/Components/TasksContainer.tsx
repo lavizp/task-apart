@@ -22,13 +22,13 @@ const CenterTasksContainer = styled.div`
 `
 
 
-export default function TasksContainer({displayAddTask, taskdata}) {
+export default function TasksContainer({displayAddTask, taskdata}: any) {
 
   const [isDragging, setIsDragging] = useState(false);
 
   const diapatch = useDispatch();
 
-  function handleOnDragEnd (result){
+  function handleOnDragEnd (result: any){
     diapatch(update_task(result));
     setIsDragging(false);
 

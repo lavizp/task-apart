@@ -40,8 +40,12 @@ const Input = styled.input`
     margin-bottom: 10px;
     color: white;
 `
+type Props = {
+    height?: string,
+    title?: boolean,
 
-const Select = styled.select`
+}
+const Select = styled.select<Props>`
     width: 98%;
     border: none;
     height: ${props=>  props.height? props.height: "30px"};
@@ -64,16 +68,17 @@ const InputContainer = styled.form`
     flex-direction: column;
 `
 
-export default function AddTask({displayAddTask}) {
-    const titleRef = useRef();
-    const descRef = useRef();
-    const catogeryRef = useRef();
-    const stateRef = useRef();
+export default function AddTask({displayAddTask}: any) {
+    const titleRef = useRef<HTMLInputElement>(null);
+    const descRef = useRef<HTMLInputElement>(null);
+    const catogeryRef = useRef<HTMLSelectElement>(null);
+    const stateRef = useRef<HTMLSelectElement>(null);
 
     const dispatch = useDispatch();
 
-    const addTaskData = (e)=>{
+    const addTaskData = (e: any)=>{
         e.preventDefault();
+        if(catogeryRef.current && titleRef.current && descRef.current && stateRef.current)
         dispatch(add_task(
             {
                 id: "9",

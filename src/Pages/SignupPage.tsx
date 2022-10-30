@@ -3,17 +3,20 @@ import { Background, Container, LeftContainer, RightContainer, Input, Button, Li
 import { useAuth } from '../FIrebase/authContext';
 export default function SignupPage() {
   const {signUp, currentUser} = useAuth();
-  const usernameRef = useRef();
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const confirmPasswordRef = useRef();
-  function handleSubmit(e){
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
+  const confirmPasswordRef = useRef<HTMLInputElement>(null);
+  function handleSubmit(e: any){
     e.preventDefault();
+    if(passwordRef.current && confirmPasswordRef.current)
     if(passwordRef.current.value !== confirmPasswordRef.current.value)
     {
       window.alert("Passwords Do Not Match");
       return;
     }
+    if(usernameRef.current && emailRef.current && passwordRef.current)
+
     signUp(usernameRef.current.value, emailRef.current.value, passwordRef.current.value);
   }
   return (

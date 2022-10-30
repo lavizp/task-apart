@@ -1,5 +1,7 @@
 import styled from 'styled-components'
-
+type Props ={
+  padding?: string
+}
 export const Background = styled.div`
   background-color: ${props=>props.theme.primaryColor};
   height: 100vh;
@@ -18,7 +20,7 @@ export const Container = styled.div`
   border-radius: 16px;
 `
 
-export const LeftContainer = styled.div`
+export const LeftContainer = styled.div<Props>`
   width: 50%;
   padding: ${props=> props.padding};
   border-radius: 0 0 10px 10px;

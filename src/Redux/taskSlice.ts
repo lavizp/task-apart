@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { useAuth } from '../FIrebase/authContext'
 
-const initialState = {
+const initialState: any = {
   tasks: [
 
   ],
