@@ -110,9 +110,9 @@ export default function AddTask({displayAddTask}: any) {
                 </Select>
                 Catogery:<Select ref={catogeryRef}>
                     <option value="Research">Research</option>
-                    <option value="Design">Design</option>
-                    <option value="In-Process">In-Process</option>
-                    <option value="Completed">Completed</option>
+                    <option value="Code">Code</option>
+                    <option value="College">College</option>
+                    <option value="Other">Other</option>
                 </Select>
                 Image: <input title = "true" type="file"></input>
 

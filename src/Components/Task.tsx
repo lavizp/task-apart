@@ -1,12 +1,17 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import styled from "styled-components";
 import {MdOutlineDone} from "react-icons/md"
 
 import { Draggable } from 'react-beautiful-dnd';
-
-
+const catogeryMap = {
+    Research: "#5051F9",
+    Code: "#F59E0B",
+    Other: "#E97342",
+    College: "#1EA7FF"
+}
 interface Props{
-    main?: boolean
+    main?: boolean,
+    bg?: string
 }
 const TaskContainer = styled.div`
     width: 160px;
@@ -22,11 +27,10 @@ const TaskContainer = styled.div`
 
 `
 
-const TaskCatogery = styled.div`
+const TaskCatogery = styled.div<Props>`
     height: 22px;
     width: 57px;
-    background-color: red;
-    background: #5051F9;
+    background: ${props=> props.bg};
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -78,6 +82,10 @@ const DetailsContainer = styled.div`
 
 
 export default function Task({id,image, title, description,catogery}: any) {
+    const [catogeryColor, setCatogeryColor] = useState(catogery); 
+    useEffect(()=>{
+        setCatogeryColor(catogeryMap.catogery);
+    },[])
   return (
     <Draggable key={id} draggableId={id} index={parseInt(id)}>
         {(provided)=>(
@@ -85,10 +93,11 @@ export default function Task({id,image, title, description,catogery}: any) {
 
         <TaskContainer >
         <TitleContainer>
-       
-        <TaskCatogery>
+       {
+        <TaskCatogery bg={catogery}>
             <p>{catogery}</p>
         </TaskCatogery>
+        }
         {image &&  <img src = "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="yahoo"></img>}
 
         <Title main>{title}</Title>
