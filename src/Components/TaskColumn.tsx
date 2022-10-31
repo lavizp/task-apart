@@ -4,7 +4,11 @@ import {BsPlusCircleFill} from 'react-icons/bs'
 import Task from './Task'
 
 import { Droppable } from 'react-beautiful-dnd'
-const TaskColumnStyle = styled.div`
+
+interface Props{
+    border?: string,
+}
+const TaskColumnStyle = styled.div<Props>`
     width: 230px;
     min-height: 200px;
     display: flex;
@@ -31,7 +35,7 @@ const TaskTitle = styled.div`
     }
 
 `
-export default function TaskColumn({title, data, isDragging,displayAddTask}) {
+export default function TaskColumn({title, data, isDragging,displayAddTask}: any) {
   return (
     <TaskColumnStyle border={isDragging? "grey": "none"}>
         <TaskTitle>
@@ -41,9 +45,9 @@ export default function TaskColumn({title, data, isDragging,displayAddTask}) {
         <Droppable droppableId={title}>
             {(provided)=>(
                     <div  {...provided.droppableProps} ref={provided.innerRef}>
-                        {data?.map((item,index)=>{
+                        {data?.map((item: any,index: number)=>{
                             return(
-                                <Task key ={item.id} id={item.id} title={item.title} catogery={item.catogery} description={item.description} image={item.image} index={index}/>
+                                <Task key ={item.id} id={item.id} title={item.title} catogery={item.catogery} description={item.description} image={item.image}/>
                             )
                         })}
                         {provided.placeholder}

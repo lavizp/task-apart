@@ -4,6 +4,10 @@ import {MdOutlineDone} from "react-icons/md"
 
 import { Draggable } from 'react-beautiful-dnd';
 
+
+interface Props{
+    main?: boolean
+}
 const TaskContainer = styled.div`
     width: 160px;
     min-height: 150px;
@@ -35,7 +39,7 @@ const TaskCatogery = styled.div`
     }
 `
 
-const Title = styled.p`
+const Title = styled.p<Props>`
     font-weight: 500;
     font-size: ${props=> props.main? "17px": "15px"};
     line-height: 17px;
@@ -73,9 +77,9 @@ const DetailsContainer = styled.div`
 `
 
 
-export default function Task({id,image, title, description,catogery,index}) {
+export default function Task({id,image, title, description,catogery}: any) {
   return (
-    <Draggable key={id} draggableId={id} index={index}>
+    <Draggable key={id} draggableId={id} index={parseInt(id)}>
         {(provided)=>(
         <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} >
 

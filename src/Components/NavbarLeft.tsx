@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import React, { useEffect, useState } from 'react'
-
-import {CiViewTimeline} from "react-icons/ci"
 import {SiHomebridge} from "react-icons/si"
 import {AiFillSetting} from "react-icons/ai"
 import {TbSubtask} from "react-icons/tb"
+
+interface Props{
+    selected: string
+}
 
 const NavContainerLeft = styled.div`
     height: "100%";
@@ -20,7 +22,7 @@ const NavContainerLeft = styled.div`
 
 `
 
-const NavItem = styled.div`
+const NavItem = styled.div<Props>`
     height: 50px;
     width: 50px;
     background-color: ${props=> props.selected === "selected"? "#5051F9": ""};
@@ -35,7 +37,7 @@ const NavItem = styled.div`
 
 
 
-export default function NavbarLeft({id}) {
+export default function NavbarLeft({id}: any) {
     const [isSelected, setSelected] = useState([false, false, false ,false]);
 
 

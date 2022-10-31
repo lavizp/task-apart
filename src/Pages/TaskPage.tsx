@@ -10,7 +10,7 @@ import { useAuth } from '../FIrebase/authContext'
 import { useNavigate } from 'react-router-dom'
 export default function TaskPage() {
   const{currentUser} = useAuth();
-  const {tasks} = useSelector((state)=> state.taskSlice)
+  const {tasks} = useSelector((state: any)=> state.taskSlice)
   const navigate = useNavigate();
     const[isAddTaskVisible, setAddTask] = useState(false)
     function displayAddTask(){
