@@ -3,12 +3,8 @@ import styled from "styled-components";
 import {MdOutlineDone} from "react-icons/md"
 
 import { Draggable } from 'react-beautiful-dnd';
-const catogeryMap = {
-    Research: "#5051F9",
-    Code: "#F59E0B",
-    Other: "#E97342",
-    College: "#1EA7FF"
-}
+import { type } from '@testing-library/user-event/dist/type';
+
 interface Props{
     main?: boolean,
     bg?: string
@@ -80,12 +76,17 @@ const DetailsContainer = styled.div`
     }
 `
 
-
+interface catogeries{
+    [key: string]: string | string
+}
+const catMap: catogeries = {
+    Research: "#5051F9",
+    Code: "#F59E0B",
+    Other: "#E97342",
+    College: "#1EA7FF"
+}
 export default function Task({id,image, title, description,catogery}: any) {
-    const [catogeryColor, setCatogeryColor] = useState(catogery); 
-    useEffect(()=>{
-        setCatogeryColor(catogeryMap.catogery);
-    },[])
+    const [catVal, setCatVal] = useState<string>(catogery);
   return (
     <Draggable key={id} draggableId={id} index={parseInt(id)}>
         {(provided)=>(
@@ -94,7 +95,7 @@ export default function Task({id,image, title, description,catogery}: any) {
         <TaskContainer >
         <TitleContainer>
        {
-        <TaskCatogery bg={catogery}>
+        <TaskCatogery bg={catMap[catVal]}>
             <p>{catogery}</p>
         </TaskCatogery>
         }
