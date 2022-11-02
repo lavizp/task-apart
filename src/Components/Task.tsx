@@ -7,9 +7,9 @@ import { useDispatch } from 'react-redux'
 import { remove_task } from '../Redux/taskSlice'
 
 import db from "../FIrebase/firebase"
-import { doc, deleteDoc } from "firebase/firestore";
 import {useAuth} from "../FIrebase/authContext"
-import firebase from "firebase/compat/app";
+import firebase from 'firebase/compat/app'
+
 
 interface Props{
     main?: boolean,
@@ -97,8 +97,7 @@ export default function Task({id,image, title, description,catogery}: any) {
     const [catVal, setCatVal] = useState<string>(catogery);
 
     const removeTask = async()=>{
-        console.log(id)
-
+        
         await db.collection("users").doc(currentUser.uid).update({
             tasks: firebase.firestore.FieldValue.arrayRemove(id.toString())
 
@@ -117,6 +116,7 @@ export default function Task({id,image, title, description,catogery}: any) {
        {
         <TaskCatogery bg={catMap[catVal]}>
             <p>{catogery}</p>
+            {id}
         </TaskCatogery>
         }
         {image &&  <img src = "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="yahoo"></img>}

@@ -29,6 +29,7 @@ export default function TasksContainer({displayAddTask, taskdata}: any) {
   const diapatch = useDispatch();
 
   function handleOnDragEnd (result: any){
+    console.log(result);
     diapatch(update_task(result));
     setIsDragging(false);
 
