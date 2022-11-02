@@ -2,7 +2,10 @@ import React, { useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { add_task } from '../Redux/taskSlice'
-
+import { useAuth } from '../FIrebase/authContext'
+import db from '../FIrebase/firebase'
+import firebase from 'firebase/compat/app'
+import { useSelector } from 'react-redux'
 const Overlay = styled.div`
     position: fixed;
     top: 0;
@@ -69,6 +72,9 @@ const InputContainer = styled.form`
 `
 
 export default function AddTask({displayAddTask}: any) {
+    const {tasks} = useSelector((state: any)=> state.taskSlice)
+
+    const {currentUser} = useAuth();
     const titleRef = useRef<HTMLInputElement>(null);
     const descRef = useRef<HTMLInputElement>(null);
     const catogeryRef = useRef<HTMLSelectElement>(null);
@@ -76,19 +82,30 @@ export default function AddTask({displayAddTask}: any) {
 
     const dispatch = useDispatch();
 
-    const addTaskData = (e: any)=>{
+    const addTaskData = async(e: any)=>{
         e.preventDefault();
-        if(catogeryRef.current && titleRef.current && descRef.current && stateRef.current)
-        dispatch(add_task(
-            {
-                id: "9",
-                catogery: catogeryRef.current.value,
-                title: titleRef.current.value,
-                description: descRef.current.value,
-                state: stateRef.current.value
-            }
-        ));
-        displayAddTask();
+        if(catogeryRef.current && titleRef.current && descRef.current && stateRef.current){
+
+            await db.collection("users").doc(currentUser.uid).update({
+                tasks: firebase.firestore.FieldValue.arrayUnion({
+                    id: tasks.length,
+                    catogery: catogeryRef.current.value,
+                    title: titleRef.current.value,
+                    description: descRef.current.value,
+                    state: stateRef.current.value
+                })
+            })
+            dispatch(add_task(
+                {
+                    id: tasks.length,
+                    catogery: catogeryRef.current.value,
+                    title: titleRef.current.value,
+                    description: descRef.current.value,
+                    state: stateRef.current.value
+                }
+                ));
+                displayAddTask();
+        }
     }
 
   return (

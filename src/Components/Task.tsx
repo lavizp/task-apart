@@ -3,7 +3,13 @@ import styled from "styled-components";
 import {MdOutlineDone} from "react-icons/md"
 
 import { Draggable } from 'react-beautiful-dnd';
-import { type } from '@testing-library/user-event/dist/type';
+import { useDispatch } from 'react-redux'
+import { remove_task } from '../Redux/taskSlice'
+
+import db from "../FIrebase/firebase"
+import { doc, deleteDoc } from "firebase/firestore";
+import {useAuth} from "../FIrebase/authContext"
+import firebase from "firebase/compat/app";
 
 interface Props{
     main?: boolean,
@@ -86,9 +92,23 @@ const catMap: catogeries = {
     College: "#1EA7FF"
 }
 export default function Task({id,image, title, description,catogery}: any) {
+    const {currentUser} = useAuth();
+    const dispatch = useDispatch();
     const [catVal, setCatVal] = useState<string>(catogery);
+
+    const removeTask = async()=>{
+        console.log(id)
+
+        await db.collection("users").doc(currentUser.uid).update({
+            tasks: firebase.firestore.FieldValue.arrayRemove(id.toString())
+
+        })
+        dispatch(remove_task({
+            id: id
+        }))
+    }
   return (
-    <Draggable key={id} draggableId={id} index={parseInt(id)}>
+    <Draggable key={id} draggableId={id.toString()} index={parseInt(id)}>
         {(provided)=>(
         <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} >
 
@@ -106,7 +126,7 @@ export default function Task({id,image, title, description,catogery}: any) {
         </TitleContainer>
         <DetailsContainer>
             <p>Aug 20, 2021</p>
-            <MdOutlineDone size={20} color="#768396"/>
+            <MdOutlineDone size={20} color="#768396" onClick={removeTask}/>
         </DetailsContainer>
 
         </TaskContainer>

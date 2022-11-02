@@ -16,15 +16,15 @@ export const taskSlice = createSlice({
     add_task: (state, newTask) => {
         let dataToAdd = {
                 state: newTask.payload.state,
-                id: state.tasks.length.toString(),
+                id: newTask.payload.id,
                 catogery: newTask.payload.catogery,
                 title: newTask.payload.title,
                 description: newTask.payload.description, 
         }
       state.tasks.push(dataToAdd);
     },
-    remove_task: (state) => {
-      //state.value -= 1
+    remove_task: (state, task) => {
+      state.tasks.splice(task.payload.id,1)
     },
     update_task: (state, action) => {
 
