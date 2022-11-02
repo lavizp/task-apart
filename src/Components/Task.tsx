@@ -9,7 +9,7 @@ import { remove_task } from '../Redux/taskSlice'
 import db from "../FIrebase/firebase"
 import {useAuth} from "../FIrebase/authContext"
 import firebase from 'firebase/compat/app'
-
+import { doc, updateDoc, arrayRemove } from 'firebase/firestore';
 
 interface Props{
     main?: boolean,
@@ -91,15 +91,20 @@ const catMap: catogeries = {
     Other: "#E97342",
     College: "#1EA7FF"
 }
-export default function Task({id,image, title, description,catogery}: any) {
+export default function Task({id,image, title, description,catogery, state}: any) {
     const {currentUser} = useAuth();
     const dispatch = useDispatch();
     const [catVal, setCatVal] = useState<string>(catogery);
 
     const removeTask = async()=>{
-        
-        await db.collection("users").doc(currentUser.uid).update({
-            tasks: firebase.firestore.FieldValue.arrayRemove(id.toString())
+        await db.collection("users").doc(currentUser.uid.toString()).update({
+            tasks: firebase.firestore.FieldValue.arrayRemove({
+                id: id,
+                catogery: catogery,
+                title: title,
+                description: description,
+                state: state
+            }),
 
         })
         dispatch(remove_task({
