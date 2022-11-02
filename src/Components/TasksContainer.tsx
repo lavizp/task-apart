@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { MainContainer } from '../styled-components/MainContainer'
 import TaskColumn from './TaskColumn'
 import styled from "styled-components";
+import db from '../FIrebase/firebase';
+import firebase from 'firebase/compat/app';
+import { doc, updateDoc } from "firebase/firestore";
 
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
+import { useAuth } from '../FIrebase/authContext';
 
 import { update_task } from '../Redux/taskSlice';
+import { idText } from 'typescript';
 
 const CenterTasksContainer = styled.div`
     width: 70%;
@@ -23,13 +28,17 @@ const CenterTasksContainer = styled.div`
 
 
 export default function TasksContainer({displayAddTask, taskdata}: any) {
-
+const{currentUser} = useAuth();
   const [isDragging, setIsDragging] = useState(false);
 
   const diapatch = useDispatch();
 
-  function handleOnDragEnd (result: any){
-    console.log(result);
+ async function handleOnDragEnd (result: any){
+
+    db.collection("users").doc(currentUser.uid).update({
+      tasks: [{id: result.source.id, state : result.destination.droppableId}]
+    })
+
     diapatch(update_task(result));
     setIsDragging(false);
 
