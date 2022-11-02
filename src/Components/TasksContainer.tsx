@@ -34,10 +34,16 @@ const{currentUser} = useAuth();
   const diapatch = useDispatch();
 
  async function handleOnDragEnd (result: any){
-
-    db.collection("users").doc(currentUser.uid).update({
-      tasks: [{id: result.source.id, state : result.destination.droppableId}]
-    })
+  console.log(result);
+    // db.collection("users").doc(currentUser.uid).update({
+    //   tasks: firebase.firestore.FieldValue.arrayRemove({
+    //     id: result.source.id,
+    //     catogery: catogery,
+    //     title: title,
+    //     description: description,
+    //     state: state
+    // }),
+    // })
 
     diapatch(update_task(result));
     setIsDragging(false);
