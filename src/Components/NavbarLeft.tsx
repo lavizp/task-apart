@@ -5,7 +5,7 @@ import {AiFillSetting} from "react-icons/ai"
 import {TbSubtask} from "react-icons/tb"
 
 interface Props{
-    selected: string
+    selected?: string
 }
 
 const NavContainerLeft = styled.div`
