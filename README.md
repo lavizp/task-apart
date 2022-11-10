@@ -1,2 +1,2 @@
 # TaskApart
-Task Managament App using React JS, Typescript, Redux and Styled Components.
+Task Managament Website using React JS, Typescript, Redux and Styled Components.
