@@ -68,8 +68,6 @@ const{currentUser} = useAuth();
             </DragDropContext>
 
         </MainContainer>
-
-
     </CenterTasksContainer>
   )
 }
