@@ -41,7 +41,6 @@ const{currentUser} = useAuth();
           if(task.id === result.source.index){
             return {...task, state: result.destination.droppableId}
           }else{
-
             return task
           }
         })
