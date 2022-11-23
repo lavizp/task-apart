@@ -4,7 +4,7 @@ import TaskColumn from './TaskColumn'
 import styled from "styled-components";
 import db from '../FIrebase/firebase';
 import firebase from 'firebase/compat/app';
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc,writeBatch } from "firebase/firestore";
 
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
@@ -35,15 +35,17 @@ const{currentUser} = useAuth();
 
  async function handleOnDragEnd (result: any){
   console.log(result);
-    // db.collection("users").doc(currentUser.uid).update({
-    //   tasks: firebase.firestore.FieldValue.arrayRemove({
-    //     id: result.source.id,
-    //     catogery: catogery,
-    //     title: title,
-    //     description: description,
-    //     state: state
-    // }),
-    // })
+  if(!result.destination) return;
+        let items = taskdata;
+        let updatedItem = items.map((task: any)=>{
+          if(task.id === result.source.index){
+            return {...task, state: result.destination.droppableId}
+          }else{
+
+            return task
+          }
+        })
+        db.collection("users").doc(currentUser.uid).update({task: updatedItem});
 
     diapatch(update_task(result));
     setIsDragging(false);
