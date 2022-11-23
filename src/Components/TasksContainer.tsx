@@ -36,6 +36,7 @@ const{currentUser} = useAuth();
  async function handleOnDragEnd (result: any){
   console.log(result);
   if(!result.destination) return;
+  if(!taskdata) return;
         let items = taskdata;
         let updatedItem = items.map((task: any)=>{
           if(task.id === result.source.index){
@@ -60,10 +61,10 @@ const{currentUser} = useAuth();
         <h1>Tasks:</h1>
         <MainContainer gap="30px">
           <DragDropContext onDragEnd={handleOnDragEnd} onDragStart={handleOnDragStart}>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="BackLog" data={taskdata.filter((item: any)=>item.state === "BackLog")}/>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="To-Do" data={taskdata.filter((item: any)=>item.state === "To-Do")}/>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="In-Process" data={taskdata.filter((item: any)=>item.state === "In-Process")}/>
-            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="Completed" data={taskdata.filter((item: any)=>item.state === "Completed")}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="BackLog" data={taskdata?.filter((item: any)=>item.state === "BackLog")}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="To-Do" data={taskdata?.filter((item: any)=>item.state === "To-Do")}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="In-Process" data={taskdata?.filter((item: any)=>item.state === "In-Process")}/>
+            <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="Completed" data={taskdata?.filter((item: any)=>item.state === "Completed")}/>
             </DragDropContext>
 
         </MainContainer>
