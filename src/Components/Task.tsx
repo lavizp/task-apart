@@ -121,7 +121,6 @@ export default function Task({id,image, title, description,catogery, state}: any
        {
         <TaskCatogery bg={catMap[catVal]}>
             <p>{catogery}</p>
-            {id}
         </TaskCatogery>
         }
         {image &&  <img src = "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="yahoo"></img>}
