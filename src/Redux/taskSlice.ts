@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { act } from 'react-dom/test-utils'
 
 const initialState: any = {
   tasks: [
@@ -24,14 +25,25 @@ export const taskSlice = createSlice({
       state.tasks.push(dataToAdd);
     },
     remove_task: (state, task) => {
-      state.tasks.splice(task.payload.id,1)
+      state.tasks = state.tasks.filter((item: any)=>{
+          return item.id !== task.payload.id;
+      })
+      //state.tasks.splice(task.payload.id,1)
     },
     update_task: (state, action) => {
 
         if(!action.payload.destination) return;
         let items = state.tasks;
-        items[action.payload.source.index].state = action.payload.destination.droppableId;
-        state.tasks = items;
+        let updatedItem=items.map((task: any)=>{
+          if(task.id === action.payload.source.index){
+            return {...task, state: action.payload.destination.droppableId}
+          }else{
+
+            return task
+          }
+        })
+        //items[action.payload.source.index].state = action.payload.destination.droppableId;
+        state.tasks = updatedItem;
     },
   },
 })
