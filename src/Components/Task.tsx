@@ -81,6 +81,9 @@ const DetailsContainer = styled.div`
         padding: 5px;
     }
 `
+const TaskCompleted = styled.div`
+    cursor: pointer;
+`
 
 interface catogeries{
     [key: string]: string | string
@@ -91,6 +94,7 @@ const catMap: catogeries = {
     Other: "#E97342",
     College: "#1EA7FF"
 }
+
 export default function Task({id,image, title, description,catogery, state}: any) {
     const {currentUser} = useAuth();
     const dispatch = useDispatch();
@@ -130,7 +134,9 @@ export default function Task({id,image, title, description,catogery, state}: any
         </TitleContainer>
         <DetailsContainer>
             <p>Aug 20, 2021</p>
-            <MdOutlineDone size={20} color="#768396" onClick={removeTask}/>
+            <TaskCompleted>
+                <MdOutlineDone size={20} color="#768396" onClick={removeTask}/>
+            </TaskCompleted>
         </DetailsContainer>
 
         </TaskContainer>
