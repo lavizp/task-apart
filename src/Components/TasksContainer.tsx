@@ -45,7 +45,7 @@ const{currentUser} = useAuth();
             return task
           }
         })
-        db.collection("users").doc(currentUser.uid).update({task: updatedItem});
+        db.collection("users").doc(currentUser.uid).update({tasks: updatedItem});
 
     diapatch(update_task(result));
     setIsDragging(false);

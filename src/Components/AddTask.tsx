@@ -88,7 +88,7 @@ export default function AddTask({displayAddTask}: any) {
 
             await db.collection("users").doc(currentUser.uid).update({
                 tasks: firebase.firestore.FieldValue.arrayUnion({
-                    id: tasks.length,
+                    id: Date.now(),
                     catogery: catogeryRef.current.value,
                     title: titleRef.current.value,
                     description: descRef.current.value,
@@ -97,7 +97,7 @@ export default function AddTask({displayAddTask}: any) {
             })
             dispatch(add_task(
                 {
-                    id: tasks.length,
+                    id: Date.now(),
                     catogery: catogeryRef.current.value,
                     title: titleRef.current.value,
                     description: descRef.current.value,
