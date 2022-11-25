@@ -35,6 +35,7 @@ const TaskTitle = styled.div`
     }
 
 `
+
 export default function TaskColumn({title, data, isDragging,displayAddTask}: any) {
   return (
     <TaskColumnStyle border={isDragging? "grey": "none"}>
