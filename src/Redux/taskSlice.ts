@@ -28,7 +28,6 @@ export const taskSlice = createSlice({
       state.tasks = state.tasks.filter((item: any)=>{
           return item.id !== task.payload.id;
       })
-      //state.tasks.splice(task.payload.id,1)
     },
     update_task: (state, action) => {
 
@@ -42,7 +41,6 @@ export const taskSlice = createSlice({
             return task
           }
         })
-        //items[action.payload.source.index].state = action.payload.destination.droppableId;
         state.tasks = updatedItem;
     },
   },

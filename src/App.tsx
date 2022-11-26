@@ -3,6 +3,7 @@ import { Route,Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { DefaultTheme } from 'styled-components';
 import TaskPage from './Pages/TaskPage';
+import HomePage from './Pages/HomePage';
 import LoginPage from "./Pages/LoginPage"
 import SignupPage from "./Pages/SignupPage"
 import { useAuth } from './FIrebase/authContext';
@@ -36,7 +37,9 @@ function App() {
   <Routes>
     <Route path ="/login" element={<LoginPage/>}/>
     <Route path ="/signup" element={<SignupPage/>}/>
-    <Route path ="/" element={<TaskPage/>}/>
+    <Route path ="/tasks" element={<TaskPage/>}/>
+    <Route path ="/" element={<HomePage/>}/>
+
 
   </Routes>
   </ThemeProvider>
