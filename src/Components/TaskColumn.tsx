@@ -20,7 +20,7 @@ const TaskColumnStyle = styled.div<Props>`
 `
 
 const TaskTitle = styled.div`
-    width: 160px;
+    width: "100%";
     height: 54px;
     border-radius: 10px;
     background-color: ${props=> props.theme.primaryColor};

@@ -31,8 +31,8 @@ const CenterTasksContainer = styled.div`
 `
 const MainContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   overflow-x: scroll;
-  gap: 30px;
   height: auto;
   padding: 30px 0px;
 `
@@ -61,6 +61,7 @@ const{currentUser} = useAuth();
         db.collection("users").doc(currentUser.uid).update({tasks: updatedItem});
 
     diapatch(update_task(result));
+    setIsDragging(false);
 
   }
   function handleOnDragStart()
