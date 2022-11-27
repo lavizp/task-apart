@@ -46,8 +46,10 @@ const{currentUser} = useAuth();
 
  async function handleOnDragEnd (result: any){
   console.log(result);
-  if(!result.destination) return;
-  if(!taskdata) return;
+  if(!result.destination){
+    setIsDragging(false);
+    return;
+  }
         let items = taskdata;
         let updatedItem = items.map((task: any)=>{
           if(task.id === result.source.index){
@@ -59,7 +61,6 @@ const{currentUser} = useAuth();
         db.collection("users").doc(currentUser.uid).update({tasks: updatedItem});
 
     diapatch(update_task(result));
-    setIsDragging(false);
 
   }
   function handleOnDragStart()

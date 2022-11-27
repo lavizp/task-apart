@@ -10,7 +10,7 @@ interface Props{
 }
 const TaskColumnStyle = styled.div<Props>`
     width: 230px;
-    min-height: 200px;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,7 +44,7 @@ export default function TaskColumn({title, data, isDragging,displayAddTask}: any
         </TaskTitle>
         <Droppable droppableId={title}>
             {(provided)=>(
-                    <div  {...provided.droppableProps} ref={provided.innerRef}>
+                    <div  {...provided.droppableProps} ref={provided.innerRef} style={{width: "100%", height: "100%"}}>
                         {data?.map((item: any)=>{
                             return(
                                 <Task key ={item.id} id={item.id} title={item.title} catogery={item.catogery} description={item.description} image={item.image} state={title}/>

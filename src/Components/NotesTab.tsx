@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const NotesContainer = styled.div`
+
     height: "100%";
     width: 25%;
     background-color: ${props=> props.theme.primaryColor};
@@ -15,7 +16,19 @@ const NotesContainer = styled.div`
         height: 80%;
         background-color: ${props=>props.theme.backgroundColor};
         color: white;
+        @media(max-width: 1024px){  
+          width: 80%;
+          min-height: 300px;
+
+      }
     }
+
+    @media(max-width: 1024px){
+      width: 100%;
+      height: auto;
+
+    }
+    
 `
 export default function NotesTab() {
   return (
