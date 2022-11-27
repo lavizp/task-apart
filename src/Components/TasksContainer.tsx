@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { MainContainer } from '../styled-components/MainContainer'
 import TaskColumn from './TaskColumn'
 import styled from "styled-components";
 import db from '../FIrebase/firebase';
@@ -23,7 +22,19 @@ const CenterTasksContainer = styled.div`
         color: white;
         font-size: 40px;
     }
+    @media(max-width: 1024px){
+      width: 100%;
+      height: auto;
 
+    }
+
+`
+const MainContainer = styled.div`
+  display: flex;
+  overflow-x: scroll;
+  gap: 30px;
+  height: auto;
+  padding: 30px 0px;
 `
 
 
@@ -59,7 +70,7 @@ const{currentUser} = useAuth();
   return (
     <CenterTasksContainer>
         <h1>Tasks:</h1>
-        <MainContainer gap="30px">
+        <MainContainer>
           <DragDropContext onDragEnd={handleOnDragEnd} onDragStart={handleOnDragStart}>
             <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="BackLog" data={taskdata?.filter((item: any)=>item.state === "BackLog")}/>
             <TaskColumn displayAddTask={displayAddTask} isDragging={isDragging} title="To-Do" data={taskdata?.filter((item: any)=>item.state === "To-Do")}/>

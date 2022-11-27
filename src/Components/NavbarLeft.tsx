@@ -18,6 +18,14 @@ const NavContainerLeft = styled.div`
     align-items:center;
     justify-content:flex-start;
     margin:0;
+    @media(max-width: 1024px){
+        padding: 40px 20px;
+        height: 10px;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+
+    }
 
 
 `
@@ -33,6 +41,11 @@ const NavItem = styled.div<Props>`
     align-items:center;
     justify-content:center;
     margin-bottom: 20px;
+    @media(max-width: 1024px){
+    height: 50px;
+        
+
+    }
 `
 
 

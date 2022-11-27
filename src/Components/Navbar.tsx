@@ -3,18 +3,23 @@ import styled from "styled-components";
 
 import {MdKeyboardArrowDown} from 'react-icons/md'
 const NavContainerTop = styled.div`
-    padding-left:15px;
-    padding-right: 30px;
-    width: "100%";
+    width: 100%;
     height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: ${props=>props.theme.primaryColor};
 
+
     h1{
       color: white;
       font-size: 25px;
+    }
+    @media(max-width: 1024px){
+      justify-content: space-around;
+      background-color: ${props=>props.theme.backgroundColor};
+
+
     }
 
 
