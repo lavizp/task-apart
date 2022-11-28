@@ -6,7 +6,6 @@ export const MainContainer = styled.div<Props>`
     width: 100%;
     display: flex;
     justify-content: start;
-    overflow: hidden;
     background-color: ${props=> props.theme.backgroundColor};
     gap: ${props=> props.gap};
     @media(max-width: 1024px){

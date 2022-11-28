@@ -18,8 +18,8 @@ const NavContainerLeft = styled.div`
     align-items:center;
     justify-content:flex-start;
     @media(max-width: 1024px){
-        padding: 0px 20px;
-        height: 80px;
+        padding-top: 0px;
+        height: 70px;
         width: 100%;
         flex-direction: row;
         justify-content: space-around;
