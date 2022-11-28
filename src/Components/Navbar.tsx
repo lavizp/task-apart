@@ -18,6 +18,10 @@ const NavContainerTop = styled.div`
     @media(max-width: 1024px){
       justify-content: space-around;
       background-color: ${props=>props.theme.backgroundColor};
+      h1{
+      color: white;
+      font-size: 15px;
+    }
 
 
     }

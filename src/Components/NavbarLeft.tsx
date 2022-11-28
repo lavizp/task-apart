@@ -65,6 +65,9 @@ export default function NavbarLeft() {
             case "/tasks":
                 setActive(2);
                 break;
+            case "/profile":
+                setActive(2);
+                break;
             
 
         }
@@ -82,6 +85,9 @@ export default function NavbarLeft() {
             case "tasks":
                 setActive(2);
                 break;
+            case "profile":
+                setActive(3);
+                break;
             
 
         }
@@ -98,7 +104,7 @@ export default function NavbarLeft() {
         <NavItem selected={isSelected[2]? "selected":""} onClick={()=>navigateToPage("tasks")}>
             <TbSubtask size={32}/>
         </NavItem>
-        <NavItem selected={isSelected[3]? "selected":""} onClick={()=>navigateToPage("")}>
+        <NavItem selected={isSelected[3]? "selected":""} onClick={()=>navigateToPage("profile")}>
             <AiFillSetting size={32}/>
         </NavItem>
 

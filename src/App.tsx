@@ -14,6 +14,7 @@ import { init_data } from './Redux/taskSlice';
 import Navbar from './Components/Navbar';
 import { MainContainer } from './styled-components/MainContainer';
 import NavbarLeft from './Components/NavbarLeft';
+import ProfilePage from './Pages/ProfilePage';
 function App() {
   const dispatch = useDispatch();
 
@@ -45,6 +46,8 @@ function App() {
     <Route path ="/signup" element={<SignupPage/>}/>
     <Route path ="/tasks" element={<TaskPage/>}/>
     <Route path ="/" element={<HomePage/>}/>
+    <Route path ="/profile" element={<ProfilePage/>}/>
+
 
 
   </Routes>
