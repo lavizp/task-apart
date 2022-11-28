@@ -68,8 +68,6 @@ export default function NavbarLeft() {
             case "/profile":
                 setActive(2);
                 break;
-            
-
         }
     },[])
     const setActive=(id:number)=>{
