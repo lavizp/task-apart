@@ -17,10 +17,9 @@ const NavContainerLeft = styled.div`
     flex-direction: column;
     align-items:center;
     justify-content:flex-start;
-    margin:0;
     @media(max-width: 1024px){
-        padding: 40px 20px;
-        height: 10px;
+        padding: 0px 20px;
+        height: 80px;
         width: 100%;
         flex-direction: row;
         justify-content: space-around;
@@ -42,7 +41,10 @@ const NavItem = styled.div<Props>`
     justify-content:center;
     margin-bottom: 20px;
     @media(max-width: 1024px){
-    height: 50px;
+        height: 50px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+
         
 
     }
