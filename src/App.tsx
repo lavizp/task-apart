@@ -11,6 +11,9 @@ import React, { useEffect } from 'react';
 import getUserData from './Services/getUserData';
 import { useDispatch } from 'react-redux';
 import { init_data } from './Redux/taskSlice';
+import Navbar from './Components/Navbar';
+import { MainContainer } from './styled-components/MainContainer';
+import NavbarLeft from './Components/NavbarLeft';
 function App() {
   const dispatch = useDispatch();
 
@@ -34,6 +37,9 @@ function App() {
   return (
 
 <ThemeProvider theme={theme}>
+<Navbar/>
+  <MainContainer>
+  <NavbarLeft/>
   <Routes>
     <Route path ="/login" element={<LoginPage/>}/>
     <Route path ="/signup" element={<SignupPage/>}/>
@@ -42,6 +48,7 @@ function App() {
 
 
   </Routes>
+  </MainContainer>
   </ThemeProvider>
   );
 }

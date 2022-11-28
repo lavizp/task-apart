@@ -13,7 +13,7 @@ import { update_task } from '../Redux/taskSlice';
 import { idText } from 'typescript';
 
 const CenterTasksContainer = styled.div`
-    width: 70%;
+    width: 80%;
     height: "100%";
     padding-left: 20px;
     background-color: ${props=> props.theme.backgroundColor};

@@ -26,6 +26,7 @@ const NavContainerTop = styled.div`
 `
 
 const NavLogo = styled.img`
+margin-left: 10px;
     height: 75%;
     object-fit: cover;
         width: 40px;

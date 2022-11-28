@@ -4,7 +4,8 @@ import styled from 'styled-components'
 const NotesContainer = styled.div`
 
     height: "100%";
-    width: 25%;
+    width: 60%;
+    margin-left: 10px;
     background-color: ${props=> props.theme.primaryColor};
     h2{
         color: white;
@@ -12,6 +13,7 @@ const NotesContainer = styled.div`
     }
     textarea{
         margin-left: 30px;
+        margin-right: 10px;
         width: 80%;
         height: 80%;
         background-color: ${props=>props.theme.backgroundColor};
