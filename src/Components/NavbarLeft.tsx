@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import {SiHomebridge} from "react-icons/si"
 import {AiFillSetting} from "react-icons/ai"
 import {TbSubtask} from "react-icons/tb"
-
+import { useNavigate } from "react-router-dom";
 interface Props{
     selected?: string
 }
@@ -52,7 +52,7 @@ const NavItem = styled.div<Props>`
 
 export default function NavbarLeft({id}: any) {
     const [isSelected, setSelected] = useState([false, false, false ,false]);
-
+    const navigate = useNavigate();
 
     const resetAll=()=>{
         let newSelected = [false,false,false,false];
@@ -62,18 +62,21 @@ export default function NavbarLeft({id}: any) {
     useEffect(()=>{
         resetAll();
     },[])
+    const navigateToPage=(page: string)=>{
+        navigate(`/${page}`)
+    }
   return (
     <NavContainerLeft>
-        <NavItem selected={isSelected[0]? "selected":""}>
+        <NavItem selected={isSelected[0]? "selected":""} onClick={()=>navigateToPage("")}>
             <SiHomebridge size={32}/>
         </NavItem>
-        <NavItem selected={isSelected[1]? "selected":""}>
+        <NavItem selected={isSelected[1]? "selected":""}  onClick={()=>navigateToPage("")}> 
             <SiHomebridge size={32}/>
         </NavItem>
-        <NavItem selected={isSelected[2]? "selected":""}>
+        <NavItem selected={isSelected[2]? "selected":""} onClick={()=>navigateToPage("tasks")}>
             <TbSubtask size={32}/>
         </NavItem>
-        <NavItem selected={isSelected[3]? "selected":""}>
+        <NavItem selected={isSelected[3]? "selected":""} onClick={()=>navigateToPage("")}>
             <AiFillSetting size={32}/>
         </NavItem>
 
