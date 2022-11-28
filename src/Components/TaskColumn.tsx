@@ -9,7 +9,7 @@ interface Props{
     border?: string,
 }
 const TaskColumnStyle = styled.div<Props>`
-    width: 230px;
+    width: 200px;
     min-height: 500px;
     display: flex;
     flex-direction: column;
@@ -20,18 +20,18 @@ const TaskColumnStyle = styled.div<Props>`
 `
 
 const TaskTitle = styled.div`
-    width: "100%";
+    width: 100%;
     height: 54px;
     border-radius: 10px;
     background-color: ${props=> props.theme.primaryColor};
     display: flex;
     align-items: center;
-    padding:0 20px;
     justify-content: space-between;
     color: white;
 
     p{
         font-size: 20px;
+        margin: 0 15px;
     }
 
 `
@@ -41,7 +41,7 @@ export default function TaskColumn({title, data, isDragging,displayAddTask}: any
     <TaskColumnStyle border={isDragging? "grey": "none"}>
         <TaskTitle>
             <p>{title}</p>
-            <BsPlusCircleFill onClick={displayAddTask}/>
+            <p><BsPlusCircleFill onClick={displayAddTask}/></p>
         </TaskTitle>
         <Droppable droppableId={title}>
             {(provided)=>(

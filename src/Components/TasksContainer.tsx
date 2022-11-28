@@ -31,8 +31,8 @@ const CenterTasksContainer = styled.div`
 `
 const MainContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  overflow-x: scroll;
+  gap: 30px;
+  overflow-y: scroll;
   height: auto;
   padding: 30px 0px;
 `
