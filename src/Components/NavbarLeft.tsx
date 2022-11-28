@@ -66,7 +66,7 @@ export default function NavbarLeft() {
                 setActive(2);
                 break;
             case "/profile":
-                setActive(2);
+                setActive(3);
                 break;
         }
     },[])

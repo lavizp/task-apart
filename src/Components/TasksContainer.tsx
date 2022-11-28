@@ -10,7 +10,6 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from '../FIrebase/authContext';
 
 import { update_task } from '../Redux/taskSlice';
-import { idText } from 'typescript';
 
 const CenterTasksContainer = styled.div`
     width: 80%;
