@@ -51,13 +51,22 @@ const NavItem = styled.div<Props>`
 
 
 export default function NavbarLeft() {
-    const [isSelected, setSelected] = useState([true, false, false ,false]);
+    const [isSelected, setSelected] = useState([false, false, false ,false]);
     const navigate = useNavigate();
+    useEffect(()=>{
+        console.log("Bandre")
+        let link = (window.location.pathname);
+        switch(link){
+            case "/":
+                setActive(0);
+                break;
+            case "/tasks":
+                setActive(2);
+                break;
+            
 
-    const resetAll=()=>{
-        let newSelected = [false,false,false,false];
-        setSelected(newSelected);
-    }
+        }
+    },[])
     const setActive=(id:number)=>{
         let newSelected = [false, false, false ,false];
         newSelected[id] = true;
