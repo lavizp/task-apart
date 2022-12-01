@@ -61,15 +61,29 @@ const Name = styled.h2`
 
 `
 const DetailsContainer = styled.div`
+  display: flex;
+  gap: 200px;
   position: absolute;
   left: 150px;
   top: 400px;
+  @media(max-width: 1024px){
+      left: 0;
+      right: 0;
+      top: 490px;
+      margin-left: auto;
+      margin-right: auto; 
+
+    }
   input{
     background: none;
     border: 3px solid;
     border-color: ${props=>props.theme.primaryColor};
     border-radius: 8px;
+    width: 100%;
     padding: 10px 20px;
+    color: white;
+  }
+  h3{
     color: white;
   }
 
@@ -85,9 +99,11 @@ export default function ProfilePage() {
       <Name>Laviz Pandey</Name>
     </ProfilePageContainer>
     <DetailsContainer>
-      <input type="text" placeholder='Laviz Pandey'/>
-      <h2>kjasdas</h2>
+      <div><h3>Name:</h3><input type="text" placeholder='Laviz Pandey'/></div>
+      <div><h3>Email:</h3><input type="text" placeholder='pandeylaviz@gmail.com'/></div>
+
     </DetailsContainer>
+
     </>
   )
 }
