@@ -24,8 +24,6 @@ const NavContainerTop = styled.div`
 
 
     }
-
-
 `
 
 const NavLogo = styled.img`
