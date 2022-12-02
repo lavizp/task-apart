@@ -42,7 +42,7 @@ const ProfilePageContainer = styled.div`
     text-align: center;
     @media(max-width: 1024px){
         right: 20px;
-        top: 450px;
+        bottom: 0px;
         width: 150px;
 
       }
@@ -123,7 +123,7 @@ export default function ProfilePage() {
     </ProfilePageContainer>
     <DetailsContainer>
       <div><h3>Name:</h3><input type="text" placeholder='Laviz Pandey'/></div>
-      <div><h3>Email:</h3><input type="text" placeholder='pandeylaviz@gmail.com'/></div>
+      <div><h3>Role:</h3><input type="text" placeholder='Front-End-Developer'/></div>
 
     </DetailsContainer>
 
