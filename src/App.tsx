@@ -1,5 +1,5 @@
 import './app.css'
-import { Route,Routes } from 'react-router-dom';
+import { Navigate, Route,Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { DefaultTheme } from 'styled-components';
 import TaskPage from './Pages/TaskPage';
@@ -15,6 +15,7 @@ import Navbar from './Components/Navbar';
 import { MainContainer } from './styled-components/MainContainer';
 import NavbarLeft from './Components/NavbarLeft';
 import ProfilePage from './Pages/ProfilePage';
+import { useNavigate } from 'react-router-dom';
 function App() {
   const dispatch = useDispatch();
 
@@ -23,6 +24,7 @@ function App() {
     primaryColor: "#1E1F25",
     backgroundColor: "#131517"
   }
+  const navigate = useNavigate();
   useEffect(()=>{
     const dataFetch = async(userID: string)=>{
       let userData: any = await getUserData(userID);

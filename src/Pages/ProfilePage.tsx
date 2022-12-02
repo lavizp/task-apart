@@ -1,6 +1,7 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import styled from 'styled-components'
-
+import { useAuth } from '../FIrebase/authContext'
+import { useNavigate } from 'react-router-dom'
 const ProfilePageContainer = styled.div`
   height: 100vh;
   width: 100%;
@@ -82,6 +83,25 @@ const Name = styled.h2`
     }
 
 `
+const LogOut = styled.button`
+  width: 100px;
+    height:30px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    position: absolute;
+    background-color: #5051F9;
+    border: none;
+    border-radius: 7px;
+    left: 150px;
+    top: 550px;
+    @media(max-width: 1024px){
+        right: 20px;
+        bottom: 0px;
+        width: 150px;
+
+      }
+`
 const DetailsContainer = styled.div`
   display: flex;
   gap: 200px;
@@ -111,6 +131,14 @@ const DetailsContainer = styled.div`
 
 `
 export default function ProfilePage() {
+  const {signOut} = useAuth();
+  const navigate = useNavigate();
+  const {currentUser} = useAuth();
+  useEffect(()=>{
+    if(!currentUser){
+    navigate("/login");
+    }
+  },[])
   return (
     <>
     <ProfilePageContainer>
@@ -124,9 +152,8 @@ export default function ProfilePage() {
     <DetailsContainer>
       <div><h3>Name:</h3><input type="text" placeholder='Laviz Pandey'/></div>
       <div><h3>Role:</h3><input type="text" placeholder='Front-End-Developer'/></div>
-
     </DetailsContainer>
-
+    <LogOut onClick={()=>signOut()}>Log Out</LogOut>
     </>
   )
 }

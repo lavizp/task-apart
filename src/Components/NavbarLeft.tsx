@@ -56,7 +56,6 @@ export default function NavbarLeft() {
     const [isSelected, setSelected] = useState([false, false, false ,false]);
     const navigate = useNavigate();
     useEffect(()=>{
-        console.log("Bandre")
         let link = (window.location.pathname);
         switch(link){
             case "/":
