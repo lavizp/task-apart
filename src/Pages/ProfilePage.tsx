@@ -24,7 +24,29 @@ const ProfilePageContainer = styled.div`
       margin-right: auto; 
 
     }
+
+
   }
+  button{
+    width: 100px;
+    height:30px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    position: absolute;
+    background-color: #5051F9;
+    border: none;
+    border-radius: 7px;
+    right: 100px;
+    top: 310px;
+    text-align: center;
+    @media(max-width: 1024px){
+        right: 20px;
+        top: 450px;
+        width: 150px;
+
+      }
+    }
 `
 
 const Banner = styled.div`
@@ -97,6 +119,7 @@ export default function ProfilePage() {
       </Banner>
       <img alt="profile" src='https://media-exp1.licdn.com/dms/image/C5603AQEyy_F49exDaQ/profile-displayphoto-shrink_800_800/0/1644306645936?e=1674691200&v=beta&t=h00G5kPe50cw3IJnh0rimzYXXoiMHd94jujwlJkuSHE'/>
       <Name>Laviz Pandey</Name>
+      <button>Save</button>
     </ProfilePageContainer>
     <DetailsContainer>
       <div><h3>Name:</h3><input type="text" placeholder='Laviz Pandey'/></div>
