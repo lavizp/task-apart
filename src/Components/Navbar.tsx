@@ -21,8 +21,6 @@ const NavContainerTop = styled.div`
       color: white;
       font-size: 15px;
     }
-
-
     }
 `
 
