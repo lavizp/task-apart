@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import TaskColumn from '../TaskColumn/TaskColumn'
 import db from '../../FIrebase/firebase';
 import { DragDropContext } from 'react-beautiful-dnd';
@@ -14,7 +14,6 @@ const{currentUser} = useAuth();
   const diapatch = useDispatch();
 
  async function handleOnDragEnd (result: any){
-  console.log(result);
   if(!result.destination){
     setIsDragging(false);
     return;
