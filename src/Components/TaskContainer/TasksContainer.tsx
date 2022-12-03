@@ -8,12 +8,9 @@ import { useAuth } from '../../FIrebase/authContext';
 import { update_task } from '../../Redux/taskSlice';
 import {CenterTasksContainer, MainContainer} from './TaskContainerStyles'
 
-
-
 export default function TasksContainer({displayAddTask, taskdata}: any) {
 const{currentUser} = useAuth();
   const [isDragging, setIsDragging] = useState(false);
-
   const diapatch = useDispatch();
 
  async function handleOnDragEnd (result: any){
