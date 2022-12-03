@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import TaskColumn from '../TaskColumn/TaskColumn'
-import styled from "styled-components";
 import db from '../../FIrebase/firebase';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
