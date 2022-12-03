@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {BsPlusCircleFill} from 'react-icons/bs'
-import Task from './Task'
+import Task from '../Task/Task'
 
 import { Droppable } from 'react-beautiful-dnd'
 

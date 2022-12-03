@@ -4,10 +4,10 @@ import {MdOutlineDone} from "react-icons/md"
 
 import { Draggable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux'
-import { remove_task } from '../Redux/taskSlice'
+import { remove_task } from '../../Redux/taskSlice'
 
-import db from "../FIrebase/firebase"
-import {useAuth} from "../FIrebase/authContext"
+import db from "../../FIrebase/firebase"
+import {useAuth} from "../../FIrebase/authContext"
 import firebase from 'firebase/compat/app'
 import { doc, updateDoc, arrayRemove } from 'firebase/firestore';
 

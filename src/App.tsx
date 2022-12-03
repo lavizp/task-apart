@@ -11,9 +11,9 @@ import React, { useEffect } from 'react';
 import getUserData from './Services/getUserData';
 import { useDispatch } from 'react-redux';
 import { init_data } from './Redux/taskSlice';
-import Navbar from './Components/Navbar';
+import Navbar from './Components/Navbar/Navbar';
 import { MainContainer } from './styled-components/MainContainer';
-import NavbarLeft from './Components/NavbarLeft';
+import NavbarLeft from './Components/NavbarLeft/NavbarLeft';
 import ProfilePage from './Pages/ProfilePage';
 import { useNavigate } from 'react-router-dom';
 function App() {

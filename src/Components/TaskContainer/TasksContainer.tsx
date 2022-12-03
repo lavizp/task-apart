@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import TaskColumn from './TaskColumn'
+import TaskColumn from '../TaskColumn/TaskColumn'
 import styled from "styled-components";
-import db from '../FIrebase/firebase';
+import db from '../../FIrebase/firebase';
 import firebase from 'firebase/compat/app';
 import { doc, updateDoc,writeBatch } from "firebase/firestore";
 
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
-import { useAuth } from '../FIrebase/authContext';
+import { useAuth } from '../../FIrebase/authContext';
 
-import { update_task } from '../Redux/taskSlice';
+import { update_task } from '../../Redux/taskSlice';
 
 const CenterTasksContainer = styled.div`
     width: 80%;
