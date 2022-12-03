@@ -2,39 +2,13 @@ import React, { useEffect, useState } from 'react'
 import TaskColumn from '../TaskColumn/TaskColumn'
 import styled from "styled-components";
 import db from '../../FIrebase/firebase';
-import firebase from 'firebase/compat/app';
-import { doc, updateDoc,writeBatch } from "firebase/firestore";
-
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../../FIrebase/authContext';
 
 import { update_task } from '../../Redux/taskSlice';
+import {CenterTasksContainer, MainContainer} from './TaskContainerStyles'
 
-const CenterTasksContainer = styled.div`
-    width: 80%;
-    height: "100%";
-    padding-left: 20px;
-    background-color: ${props=> props.theme.backgroundColor};
-
-    h1{
-        color: white;
-        font-size: 40px;
-    }
-    @media(max-width: 1024px){
-      width: 100%;
-      height: auto;
-
-    }
-
-`
-const MainContainer = styled.div`
-  display: flex;
-  gap: 30px;
-  overflow-y: scroll;
-  height: auto;
-  padding: 30px 0px;
-`
 
 
 export default function TasksContainer({displayAddTask, taskdata}: any) {
