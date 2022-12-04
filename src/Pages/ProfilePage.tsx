@@ -2,6 +2,9 @@ import React,{useEffect} from 'react'
 import styled from 'styled-components'
 import { useAuth } from '../FIrebase/authContext'
 import { useNavigate } from 'react-router-dom'
+import Navbar from '../Components/Navbar/Navbar'
+import { MainContainer } from '../styled-components/MainContainer'
+import NavbarLeft from '../Components/NavbarLeft/NavbarLeft'
 const ProfilePageContainer = styled.div`
   height: 100vh;
   width: 100%;
@@ -141,6 +144,9 @@ export default function ProfilePage() {
   },[])
   return (
     <>
+    <Navbar/>
+    <MainContainer>
+    <NavbarLeft/>
     <ProfilePageContainer>
       <Banner>
         <img src="https://assets-global.website-files.com/616e938268c8f0a92cb2b540/617806fb52d751a1fab3898a_youtube%20banner%20size%20guide.jpg" alt="banner" />
@@ -154,6 +160,7 @@ export default function ProfilePage() {
       <div><h3>Role:</h3><input type="text" placeholder='Front-End-Developer'/></div>
     </DetailsContainer>
     <LogOut onClick={()=>signOut()}>Log Out</LogOut>
+    </MainContainer>
     </>
   )
 }

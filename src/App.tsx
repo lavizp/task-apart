@@ -40,20 +40,14 @@ function App() {
   return (
 
 <ThemeProvider theme={theme}>
-<Navbar/>
-  <MainContainer>
-  <NavbarLeft/>
+
   <Routes>
     <Route path ="/login" element={<LoginPage/>}/>
     <Route path ="/signup" element={<SignupPage/>}/>
     <Route path ="/tasks" element={<TaskPage/>}/>
     <Route path ="/" element={<HomePage/>}/>
     <Route path ="/profile" element={<ProfilePage/>}/>
-
-
-
   </Routes>
-  </MainContainer>
   </ThemeProvider>
   );
 }

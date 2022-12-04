@@ -25,8 +25,9 @@ export default function TaskPage() {
   return (
     <>
     {isAddTaskVisible&&<AddTask displayAddTask={displayAddTask}/>}
+    <Navbar/>
     <MainContainer >
-      {/* <NavbarLeft id={2}/> */}
+      <NavbarLeft/>
       <TasksContainer displayAddTask={displayAddTask} taskdata={tasks}/>
       <NotesTab/>
     </MainContainer>

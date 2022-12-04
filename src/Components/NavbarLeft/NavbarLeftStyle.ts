@@ -6,7 +6,7 @@ interface Props{
 const NavContainerLeft = styled.div`
     height: "100%";
     padding-top: 100px;
-    width: 5%;
+    min-width: 70px;
     background-color: ${props=>props.theme.primaryColor};
     display: flex;
     flex-direction: column;
