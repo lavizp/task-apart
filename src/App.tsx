@@ -33,10 +33,11 @@ function App() {
         userData.data().tasks
       ))
     }
+    console.log("dhunge");
     if(currentUser){
       dataFetch(currentUser.uid);
     }
-  },[])
+  },[currentUser])
   return (
 
 <ThemeProvider theme={theme}>

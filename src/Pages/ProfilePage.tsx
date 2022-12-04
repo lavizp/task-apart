@@ -6,8 +6,10 @@ import Navbar from '../Components/Navbar/Navbar'
 import { MainContainer } from '../styled-components/MainContainer'
 import NavbarLeft from '../Components/NavbarLeft/NavbarLeft'
 const ProfilePageContainer = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
   @media(max-width: 1024px){
       width: 100%;
 
@@ -31,26 +33,7 @@ const ProfilePageContainer = styled.div`
 
 
   }
-  button{
-    width: 100px;
-    height:30px;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    position: absolute;
-    background-color: #5051F9;
-    border: none;
-    border-radius: 7px;
-    right: 100px;
-    top: 310px;
-    text-align: center;
-    @media(max-width: 1024px){
-        right: 20px;
-        bottom: 0px;
-        width: 150px;
 
-      }
-    }
 `
 
 const Banner = styled.div`
@@ -66,6 +49,26 @@ const Banner = styled.div`
     top: 0;
     border-radius: 0;
     object-fit: cover;
+  }
+`
+const SaveButton = styled.button`
+width: 100px;
+height:30px;
+color: white;
+font-size: 15px;
+font-weight: bold;
+position: absolute;
+background-color: #5051F9;
+border: none;
+border-radius: 7px;
+right: 100px;
+top: 310px;
+text-align: center;
+@media(max-width: 1024px){
+    right: 20px;
+    bottom: 0px;
+    width: 150px;
+
   }
 `
 const Name = styled.h2`
@@ -87,17 +90,15 @@ const Name = styled.h2`
 
 `
 const LogOut = styled.button`
-  width: 100px;
+    width: 100px;
     height:30px;
     color: white;
     font-size: 15px;
     font-weight: bold;
-    position: absolute;
     background-color: #5051F9;
     border: none;
     border-radius: 7px;
-    left: 150px;
-    top: 550px;
+    cursor: pointer;
     @media(max-width: 1024px){
         right: 20px;
         bottom: 0px;
@@ -107,10 +108,11 @@ const LogOut = styled.button`
 `
 const DetailsContainer = styled.div`
   display: flex;
-  gap: 200px;
-  position: absolute;
-  left: 150px;
-  top: 400px;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 100px;
+  margin-left: 50px;
+  margin-bottom: 50px;
   @media(max-width: 1024px){
       left: 0;
       right: 0;
@@ -124,7 +126,7 @@ const DetailsContainer = styled.div`
     border: 3px solid;
     border-color: ${props=>props.theme.primaryColor};
     border-radius: 8px;
-    width: 100%;
+    width: 250px;
     padding: 10px 20px;
     color: white;
   }
@@ -153,13 +155,13 @@ export default function ProfilePage() {
       </Banner>
       <img alt="profile" src='https://media-exp1.licdn.com/dms/image/C5603AQEyy_F49exDaQ/profile-displayphoto-shrink_800_800/0/1644306645936?e=1674691200&v=beta&t=h00G5kPe50cw3IJnh0rimzYXXoiMHd94jujwlJkuSHE'/>
       <Name>Laviz Pandey</Name>
-      <button>Save</button>
-    </ProfilePageContainer>
+      <SaveButton>Save</SaveButton>
     <DetailsContainer>
       <div><h3>Name:</h3><input type="text" placeholder='Laviz Pandey'/></div>
       <div><h3>Role:</h3><input type="text" placeholder='Front-End-Developer'/></div>
-    </DetailsContainer>
     <LogOut onClick={()=>signOut()}>Log Out</LogOut>
+    </DetailsContainer>
+    </ProfilePageContainer>
     </MainContainer>
     </>
   )

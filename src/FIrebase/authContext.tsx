@@ -16,13 +16,14 @@ export function AuthProvider({ children }: any) {
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState({});
 
-  async function signUp(username: string, email: string, password: string) {
+  async function signUp(username: string, email: string, password: string, role: string) {
     await auth.createUserWithEmailAndPassword(email, password);
     if(auth.currentUser)
     setDoc(doc(db, "users", auth.currentUser.uid), {
       username,
       email,
       password,
+      role,
       tasks: {
     "BackLog": [
       ],
