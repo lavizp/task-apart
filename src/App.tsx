@@ -1,5 +1,5 @@
 import './app.css'
-import { Navigate, Route,Routes } from 'react-router-dom';
+import { Route,Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { DefaultTheme } from 'styled-components';
 import TaskPage from './Pages/TaskPage';
@@ -7,15 +7,11 @@ import HomePage from './Pages/HomePage';
 import LoginPage from "./Pages/LoginPage"
 import SignupPage from "./Pages/SignupPage"
 import { useAuth } from './FIrebase/authContext';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import getUserData from './Services/getUserData';
 import { useDispatch } from 'react-redux';
 import { init_data } from './Redux/taskSlice';
-import Navbar from './Components/Navbar/Navbar';
-import { MainContainer } from './styled-components/MainContainer';
-import NavbarLeft from './Components/NavbarLeft/NavbarLeft';
 import ProfilePage from './Pages/ProfilePage';
-import { useNavigate } from 'react-router-dom';
 function App() {
   const dispatch = useDispatch();
 
@@ -24,7 +20,6 @@ function App() {
     primaryColor: "#1E1F25",
     backgroundColor: "#131517"
   }
-  const navigate = useNavigate();
   useEffect(()=>{
     const dataFetch = async(userID: string)=>{
       let userData: any = await getUserData(userID);
