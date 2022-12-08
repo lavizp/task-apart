@@ -12,6 +12,8 @@ import getUserData from './Services/getUserData';
 import { useDispatch } from 'react-redux';
 import { init_data } from './Redux/taskSlice';
 import ProfilePage from './Pages/ProfilePage';
+
+import * as api from './api/index'
 function App() {
   const dispatch = useDispatch();
 
@@ -22,13 +24,12 @@ function App() {
   }
   useEffect(()=>{
     const dataFetch = async(userID: string)=>{
-      let userData: any = await getUserData(userID);
-      console.log(userData.data().tasks);
+      let {data} = await api.getTasks()
+      console.log(data)
       dispatch(init_data(
-        userData.data().tasks
+        data
       ))
     }
-    console.log("dhunge");
     if(currentUser){
       dataFetch(currentUser.uid);
     }
