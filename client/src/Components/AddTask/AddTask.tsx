@@ -5,7 +5,7 @@ import { useAuth } from '../../FIrebase/authContext'
 import db from '../../FIrebase/firebase'
 import firebase from 'firebase/compat/app'
 import {Overlay,InputContainer, Button, Select, Input, AddTaskContainer} from './AddTaskStyles'
-
+import * as api from '../../api/index'
 
 export default function AddTask({displayAddTask}: any) {
 
@@ -19,29 +19,31 @@ export default function AddTask({displayAddTask}: any) {
 
     const addTaskData = async(e: any)=>{
         e.preventDefault();
+        
         if(catogeryRef.current && titleRef.current && descRef.current && stateRef.current){
-
-            await db.collection("users").doc(currentUser.uid).update({
-                tasks: firebase.firestore.FieldValue.arrayUnion({
-                    id: Date.now(),
-                    catogery: catogeryRef.current.value,
-                    title: titleRef.current.value,
-                    description: descRef.current.value,
-                    state: stateRef.current.value
-                })
-            })
-            dispatch(add_task(
+            var task = {
+                title: titleRef.current.value,
+                description: descRef.current.value,
+                catogery: catogeryRef.current.value,
+                state: stateRef.current.value
+            }
+            console.log(task)
+            const {data} = await api.createTasks(
                 {
-                    id: Date.now(),
-                    catogery: catogeryRef.current.value,
                     title: titleRef.current.value,
                     description: descRef.current.value,
+                    catogery: catogeryRef.current.value,
                     state: stateRef.current.value
                 }
+            )
+            
+            dispatch(add_task(
+                task
                 ));
                 displayAddTask();
         }
     }
+    
 
   return (
     <Overlay>
