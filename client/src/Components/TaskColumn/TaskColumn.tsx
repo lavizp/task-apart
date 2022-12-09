@@ -17,7 +17,7 @@ export default function TaskColumn({title, data, isDragging,displayAddTask}: any
                     <div  {...provided.droppableProps} ref={provided.innerRef} style={{width: "100%", height: "100%"}}>
                         {data?.map((item: any)=>{
                             return(
-                                <Task key ={item._id} id={item._id} title={item.title} catogery={item.catogery} description={item.description} image={item.image} state={title}/>
+                                <Task key ={item.id} id={item.id} title={item.title} catogery={item.catogery} description={item.description} image={item.image} state={title}/>
                             )
                         })}
                         {provided.placeholder}

@@ -22,6 +22,7 @@ export default function AddTask({displayAddTask}: any) {
         
         if(catogeryRef.current && titleRef.current && descRef.current && stateRef.current){
             var task = {
+                id: Date.now(),
                 title: titleRef.current.value,
                 description: descRef.current.value,
                 catogery: catogeryRef.current.value,
@@ -30,6 +31,7 @@ export default function AddTask({displayAddTask}: any) {
             console.log(task)
             const {data} = await api.createTasks(
                 {
+                    id: Date.now(),
                     title: titleRef.current.value,
                     description: descRef.current.value,
                     catogery: catogeryRef.current.value,
