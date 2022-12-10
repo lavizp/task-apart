@@ -1,17 +1,12 @@
 import './app.css'
-import { Route,Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { DefaultTheme } from 'styled-components';
-import TaskPage from './Pages/TaskPage';
-import HomePage from './Pages/HomePage';
-import LoginPage from "./Pages/LoginPage"
-import SignupPage from "./Pages/SignupPage"
 import { useAuth } from './FIrebase/authContext';
 import { useEffect } from 'react';
-import getUserData from './Services/getUserData';
 import { useDispatch } from 'react-redux';
 import { init_data } from './Redux/taskSlice';
-import ProfilePage from './Pages/ProfilePage';
+import LoggedInRoutes from './routes/LoggedInRoutes';
+import SignedOutRoutes from './routes/SignedOutRoutes';
 
 import * as api from './api/index'
 function App() {
@@ -37,14 +32,8 @@ function App() {
   return (
 
 <ThemeProvider theme={theme}>
+    {currentUser?<LoggedInRoutes/> : <SignedOutRoutes/>}
 
-  <Routes>
-    <Route path ="/login" element={<LoginPage/>}/>
-    <Route path ="/signup" element={<SignupPage/>}/>
-    <Route path ="/tasks" element={<TaskPage/>}/>
-    <Route path ="/" element={<HomePage/>}/>
-    <Route path ="/profile" element={<ProfilePage/>}/>
-  </Routes>
   </ThemeProvider>
   );
 }
