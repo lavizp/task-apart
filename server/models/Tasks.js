@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const TaskSchema = mongoose.Schema({
-    id: {
-        type: String,
-        require: true
-    },
     title: {
         type: String,
         require: true

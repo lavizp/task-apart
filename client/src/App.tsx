@@ -25,10 +25,10 @@ function App() {
   useEffect(()=>{
     const dataFetch = async(userID: string)=>{
       let {data} = await api.getTasks()
-      console.log(data)
       dispatch(init_data(
-        data
-      ))
+          data
+        )
+      )
     }
     if(currentUser){
       dataFetch(currentUser.uid);

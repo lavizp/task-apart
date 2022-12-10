@@ -27,11 +27,23 @@ export const getTask = (req,res) =>{
 }
 
 export const createTask = async(req,res) =>{
-    const {id,title, description,catogery, state, image } = req.body
+    const {title, description,catogery, state, image } = req.body
 
-    const newTask = new TasksModel({id,title, description,catogery, state, image })
+    const newTask = new TasksModel({title, description,catogery, state, image })
     try{
         await newTask.save()
+        res.status(200).json(newTask)
+    }catch(e){
+        res.status(404).send(e)
+    }
+}
+export const updateTask = async(req,res) =>{
+    const {id} = req.params
+    const {title, description,catogery, state, image } = req.body
+
+    const updatedTask = {id,title, description,catogery, state, image }
+    try{
+        await TasksModel.findByIdAndUpdate(id, updatedTask)
         res.status(200).json(newTask)
     }catch(e){
         res.status(404).send(e)

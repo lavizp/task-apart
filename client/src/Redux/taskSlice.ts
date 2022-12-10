@@ -17,7 +17,7 @@ export const taskSlice = createSlice({
     add_task: (state, newTask) => {
         let dataToAdd = {
                 state: newTask.payload.state,
-                id: newTask.payload.id,
+                _id: newTask.payload._id,
                 catogery: newTask.payload.catogery,
                 title: newTask.payload.title,
                 description: newTask.payload.description, 
@@ -34,7 +34,7 @@ export const taskSlice = createSlice({
         if(!action.payload.destination) return;
         let items = state.tasks;
         let updatedItem=items.map((task: any)=>{
-          if(task.id === action.payload.source.index){
+          if(task._id === action.payload.draggableId){
             return {...task, state: action.payload.destination.droppableId}
           }else{
 

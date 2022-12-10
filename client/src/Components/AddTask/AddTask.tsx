@@ -21,23 +21,22 @@ export default function AddTask({displayAddTask}: any) {
         e.preventDefault();
         
         if(catogeryRef.current && titleRef.current && descRef.current && stateRef.current){
-            var task = {
-                id: Date.now(),
-                title: titleRef.current.value,
-                description: descRef.current.value,
-                catogery: catogeryRef.current.value,
-                state: stateRef.current.value
-            }
-            console.log(task)
+
             const {data} = await api.createTasks(
                 {
-                    id: Date.now(),
                     title: titleRef.current.value,
                     description: descRef.current.value,
                     catogery: catogeryRef.current.value,
                     state: stateRef.current.value
                 }
             )
+            var task = {
+                _id: data._id,
+                title: titleRef.current.value,
+                description: descRef.current.value,
+                catogery: catogeryRef.current.value,
+                state: stateRef.current.value,
+            }
             
             dispatch(add_task(
                 task

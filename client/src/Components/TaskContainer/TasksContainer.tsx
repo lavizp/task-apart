@@ -18,9 +18,12 @@ const{currentUser} = useAuth();
     setIsDragging(false);
     return;
   }
+        console.log(result)
         let items = taskdata;
         let updatedItem = items.map((task: any)=>{
-          if(task.id === result.source.index){
+
+          if(task._id === result.draggableId){
+
             return {...task, state: result.destination.droppableId}
           }else{
             return task
