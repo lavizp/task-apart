@@ -8,7 +8,7 @@ import { remove_task } from '../../Redux/taskSlice'
 import db from "../../FIrebase/firebase"
 import {useAuth} from "../../FIrebase/authContext"
 import firebase from 'firebase/compat/app'
-
+import * as api from '../../api/index'
 import {Title, TitleContainer,TaskCatogery, TaskCompleted, TaskContainer, DetailsContainer} from './TaskStyles'
 interface catogeries{
     [key: string]: string | string
@@ -26,16 +26,7 @@ export default function Task({id,image, title, description,catogery, state}: any
     const [catVal, setCatVal] = useState<string>(catogery);
 
     const removeTask = async()=>{
-        await db.collection("users").doc(currentUser.uid.toString()).update({
-            tasks: firebase.firestore.FieldValue.arrayRemove({
-                id: id,
-                catogery: catogery,
-                title: title,
-                description: description,
-                state: state
-            }),
-
-        })
+        await api.deleteTask(id);
         dispatch(remove_task({
             id: id
         }))

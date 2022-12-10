@@ -49,5 +49,14 @@ export const updateTask = async(req,res) =>{
         res.status(404).send(e)
     }
 }
+export const deleteTask = async(req,res) =>{
+    const {id} = req.params
+    try{
+        await TasksModel.findByIdAndRemove(id)
+        res.status(200).send("done deleting")
+    }catch(e){
+        res.status(404).send(e)
+    }
+}
 
 export default router

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { stat } from 'fs'
 import { act } from 'react-dom/test-utils'
 
 const initialState: any = {
@@ -26,7 +27,7 @@ export const taskSlice = createSlice({
     },
     remove_task: (state, task) => {
       state.tasks = state.tasks.filter((item: any)=>{
-          return item.id !== task.payload.id;
+          return item._id !== task.payload.id;
       })
     },
     update_task: (state, action) => {
