@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import Navbar from '../Components/Navbar/Navbar'
 import { MainContainer } from '../styled-components/MainContainer'
 import NavbarLeft from '../Components/NavbarLeft/NavbarLeft'
+
 const ProfilePageContainer = styled.div`
   height: 100%;
   width: 100%;
@@ -139,11 +140,11 @@ export default function ProfilePage() {
   const {signOut} = useAuth();
   const navigate = useNavigate();
   const {currentUser} = useAuth();
-  useEffect(()=>{
-    if(!currentUser){
-    navigate("/login");
-    }
-  },[])
+ const signOutHandler  = async () => {
+    await signOut()
+    navigate("/login")
+ }
+ 
   return (
     <>
     <Navbar/>
@@ -159,7 +160,7 @@ export default function ProfilePage() {
     <DetailsContainer>
       <div><h3>Name:</h3><input type="text" placeholder='Laviz Pandey'/></div>
       <div><h3>Role:</h3><input type="text" placeholder='Front-End-Developer'/></div>
-    <LogOut onClick={()=>signOut()}>Log Out</LogOut>
+    <LogOut onClick={()=>signOutHandler()}>Log Out</LogOut>
     </DetailsContainer>
     </ProfilePageContainer>
     </MainContainer>
