@@ -39,6 +39,8 @@ export const createTask = async(req,res) =>{
 }
 export const updateTask = async(req,res) =>{
     const {id} = req.params
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
     const {title, description,catogery, state, image } = req.body
 
     const updatedTask = {id,title, description,catogery, state, image }
@@ -51,6 +53,8 @@ export const updateTask = async(req,res) =>{
 }
 export const deleteTask = async(req,res) =>{
     const {id} = req.params
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
     try{
         await TasksModel.findByIdAndRemove(id)
         res.status(200).send("done deleting")
