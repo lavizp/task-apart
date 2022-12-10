@@ -44,7 +44,7 @@ export const updateTask = async(req,res) =>{
     const updatedTask = {id,title, description,catogery, state, image }
     try{
         await TasksModel.findByIdAndUpdate(id, updatedTask)
-        res.status(200).json(newTask)
+        res.status(200).json(updatedTask)
     }catch(e){
         res.status(404).send(e)
     }

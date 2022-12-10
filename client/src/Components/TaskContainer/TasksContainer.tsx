@@ -7,7 +7,7 @@ import { useAuth } from '../../FIrebase/authContext';
 
 import { update_task } from '../../Redux/taskSlice';
 import {CenterTasksContainer, MainContainer} from './TaskContainerStyles'
-
+import * as api from  '../../api/index'
 export default function TasksContainer({displayAddTask, taskdata}: any) {
 const{currentUser} = useAuth();
   const [isDragging, setIsDragging] = useState(false);
@@ -23,13 +23,14 @@ const{currentUser} = useAuth();
         let updatedItem = items.map((task: any)=>{
 
           if(task._id === result.draggableId){
-
-            return {...task, state: result.destination.droppableId}
+            let updatedTask =  {...task, state: result.destination.droppableId};
+            api.updateTask(task._id, updatedTask)
+            
+            return update_task;
           }else{
             return task
           }
         })
-        db.collection("users").doc(currentUser.uid).update({tasks: updatedItem});
 
     diapatch(update_task(result));
     setIsDragging(false);
