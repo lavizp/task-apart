@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv"
 import mongoose from "mongoose";
 import taskRouter from './routes/tasks.js'
+import userRouter from './routes/users.js'
 import cors from "cors"
 const app = express()
 app.use(express.json())
@@ -19,4 +20,5 @@ app.get("/", (req, res)=>{
 })
 
 app.use("/tasks", taskRouter)
+app.use("/users", userRouter)
 

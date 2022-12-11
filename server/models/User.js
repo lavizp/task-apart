@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
-import TasksModel from "./Tasks";
+import TasksModel from "./Tasks.js";
 const UserScheme = new mongoose.Schema({
     name: {
+        type: String,
+        require: true
+    },
+    username:{
         type: String,
         require: true
     },
@@ -9,10 +13,10 @@ const UserScheme = new mongoose.Schema({
     role: String,
     profileImage: String,
     banner: String,
-    tasks: [TasksModel],
+    tasks: [TasksModel.schema],
     password: String
 
 })
 
-let UserModel = mongoose.model("Tasks", TaskSchema);
+let UserModel = mongoose.model("Users", UserScheme);
 export default UserModel;
