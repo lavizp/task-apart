@@ -5,8 +5,8 @@ const router = express.Router()
 
 router.get("/:id", getTasks)
 router.post("/:id", createTask)
-router.patch("/:id", updateTask)
-router.delete("/:id", deleteTask)
+router.patch("/:uid", updateTask)
+router.delete("/:uid", deleteTask)
 
 
 
