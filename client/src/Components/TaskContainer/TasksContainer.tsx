@@ -24,7 +24,7 @@ const{currentUser} = useAuth();
 
           if(task._id === result.draggableId){
             let updatedTask =  {...task, state: result.destination.droppableId};
-            api.updateTask(task._id, updatedTask)
+            api.updateTask(currentUser.uid, updatedTask)
             
             return update_task;
           }else{

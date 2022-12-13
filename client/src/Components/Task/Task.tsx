@@ -26,7 +26,7 @@ export default function Task({id,image, title, description,catogery, state}: any
     const [catVal, setCatVal] = useState<string>(catogery);
 
     const removeTask = async()=>{
-        await api.deleteTask(id);
+        await api.deleteTask( currentUser.uid ,id);
         dispatch(remove_task({
             id: id
         }))
