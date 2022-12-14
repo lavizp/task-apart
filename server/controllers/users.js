@@ -4,8 +4,10 @@ import UserModel from "../models/User.js";
 const router = express.Router()
 
 export const login = async(req,res) =>{
+    const username = req.body.username
+    const password = req.body.password
+    console.log(username)
     try{
-        const {username, password} = req.body
         let users = await UserModel.find()
         let user = (users.find((item)=> item.username === username))
         if(!user){

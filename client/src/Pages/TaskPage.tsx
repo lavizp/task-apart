@@ -8,11 +8,28 @@ import NotesTab from '../Components/NotesTab/NotesTab'
 import AddTask from '../Components/AddTask/AddTask'
 import { useAuth } from '../FIrebase/authContext'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { init_data } from '../Redux/taskSlice'
+import * as api from '../api/index'
 export default function TaskPage() {
+  const dispatch = useDispatch();
   const{currentUser} = useAuth();
   const {tasks} = useSelector((state: any)=> state.taskSlice)
   const navigate = useNavigate();
     const[isAddTaskVisible, setAddTask] = useState(false)
+    useEffect(()=>{
+      const dataFetch = async(userID: string)=>{
+        if(!currentUser) return
+        let {data} = await api.getTasks(currentUser.uid)
+        dispatch(init_data(
+            data
+          )
+        )
+      }
+      if(currentUser){
+        dataFetch(currentUser.uid);
+      }
+    },[currentUser])
     function displayAddTask(){
       setAddTask(prev =>!prev);
     }

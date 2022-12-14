@@ -2,7 +2,7 @@ import db from "./firebase";
 import { doc, setDoc } from "firebase/firestore";
 import firebase from "firebase/compat/app"
 import React, { useContext, useState, useEffect } from "react";
-
+import * as api from '../api/index'
 import { auth } from "./firebase"
 const AuthContext = React.createContext<any | null>(null);
 
@@ -37,13 +37,18 @@ export function AuthProvider({ children }: any) {
     });
   }
 
-  function login(email:string, password:string) {
-    return auth.signInWithEmailAndPassword(email, password);
+ async function login(username:string, password:string) {
+  const userDatas: any = {
+    "username": username,
+    "password": password
+  }
+  console.log(userDatas)
+    const user: any = await api.login(userData)
+    setCurrentUser(user)
+
   }
   function signOut() {
-    console.log("Sign Out");
-    window.location.reload();
-    return auth.signOut();
+    setCurrentUser(null);
   }
 
   useEffect(() => {
