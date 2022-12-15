@@ -43,8 +43,8 @@ export function AuthProvider({ children }: any) {
     "password": password
   }
   console.log(userDatas)
-    const user: any = await api.login(userData)
-    setCurrentUser(user)
+    const user: any = await api.login(userDatas)
+    setCurrentUser(user.data._id)
 
   }
   function signOut() {

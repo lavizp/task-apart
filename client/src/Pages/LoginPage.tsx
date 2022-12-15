@@ -10,8 +10,10 @@ export default function LoginPage() {
   const handleSubmit = async (e: any)=>{
     e.preventDefault();
     if(emailRef.current && passwordRef.current)
-    await login(emailRef.current.value, passwordRef.current.value)
-    navigate("/")
+    {
+      await login(emailRef.current.value, passwordRef.current.value)
+      navigate("/")
+    }
   }
   return (
     <Background>

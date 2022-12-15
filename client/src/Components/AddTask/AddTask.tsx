@@ -21,7 +21,7 @@ export default function AddTask({displayAddTask}: any) {
         if(catogeryRef.current && titleRef.current && descRef.current && stateRef.current){
 
             const {data} = await api.createTasks(
-                currentUser.uid,
+                currentUser,
                 {
                     title: titleRef.current.value,
                     description: descRef.current.value,
