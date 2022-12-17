@@ -48,19 +48,16 @@ export const updateTask = async(req,res) =>{
     const {uid} = req.params
     if (!mongoose.Types.ObjectId.isValid(uid)) return res.status(404).send(`No post with id: ${uid}`);
 
-    const {id,title, description,catogery, state, image } = req.body
+    const {_id,title, description,catogery, state, image } = req.body
 
-    const updatedTask = {id,title, description,catogery, state, image}
+    const updatedTask = {_id,title, description,catogery, state, image}
     try{
         const user = await UserModel.findById(uid)
 
-        user.tasks.map((item)=>{
-            if(item._id == id){
-                item.catogery = catogery
-            }
-        })
+        const task = user.tasks.find((item)=> item._id == updatedTask._id)
+        task.state = state
         await user.save()
-        res.status(200).json(updatedTask)
+        res.status(200).json(user.tasks)
     }catch(e){
         console.log(e)
         res.status(404).send(e)
@@ -69,11 +66,13 @@ export const updateTask = async(req,res) =>{
 export const deleteTask = async(req,res) =>{
     const {uid} = req.params
     if (!mongoose.Types.ObjectId.isValid(uid)) return res.status(404).send(`No post with id: ${uid}`);
-    const {id} = req.body
+    const {_id} = req.body
+    console.log(_id)
+    console.log(uid)
     try{
         let user = await UserModel.findById(uid)
-        await UserModel.findByIdAndUpdate(uid, {tasks: user.tasks.filter((item)=> item._id != id)})
-        user.tasks.filter((item)=> item._id != id)
+        await UserModel.findByIdAndUpdate(uid, {tasks: user.tasks.filter((item)=> item._id != _id)})
+        user.tasks.filter((item)=> item._id != _id)
         await user.save()
         res.status(200).send("done deleting")
     }catch(e){

@@ -20,25 +20,19 @@ export default function TaskPage() {
     useEffect(()=>{
       const dataFetch = async(userID: string)=>{
         if(!currentUser) return
-        let {data} = await api.getTasks(currentUser.uid)
+        let {data} = await api.getTasks(currentUser)
         dispatch(init_data(
             data
           )
         )
       }
       if(currentUser){
-        dataFetch(currentUser.uid);
+        dataFetch(currentUser);
       }
-    },[currentUser])
+    },[])
     function displayAddTask(){
       setAddTask(prev =>!prev);
     }
-
-    useEffect(()=>{
-      if(!currentUser){
-      navigate("/login");
-      }
-    },[])
   return (
     <>
     {isAddTaskVisible&&<AddTask displayAddTask={displayAddTask}/>}

@@ -20,13 +20,14 @@ const{currentUser} = useAuth();
   }
         console.log(result)
         let items = taskdata;
-        let updatedItem = items.map((task: any)=>{
+        let updatedItem = items.map(async (task: any)=>{
 
           if(task._id === result.draggableId){
             let updatedTask =  {...task, state: result.destination.droppableId};
-            api.updateTask(currentUser.uid, updatedTask)
+            console.log(updatedTask)
+            await api.updateTask(currentUser, updatedTask)
             
-            return update_task;
+            return updatedTask;
           }else{
             return task
           }

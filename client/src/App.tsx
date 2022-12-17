@@ -2,12 +2,9 @@ import './app.css'
 import { ThemeProvider } from 'styled-components';
 import { DefaultTheme } from 'styled-components';
 import { useAuth } from './FIrebase/authContext';
-import { useEffect } from 'react';
-import { init_data } from './Redux/taskSlice';
 import LoggedInRoutes from './routes/LoggedInRoutes';
 import SignedOutRoutes from './routes/SignedOutRoutes';
 
-import * as api from './api/index'
 function App() {
 
   const {currentUser} = useAuth();

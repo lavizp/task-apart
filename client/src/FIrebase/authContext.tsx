@@ -1,6 +1,3 @@
-import db from "./firebase";
-import { doc, setDoc } from "firebase/firestore";
-import firebase from "firebase/compat/app"
 import React, { useContext, useState, useEffect } from "react";
 import * as api from '../api/index'
 import { auth } from "./firebase"
@@ -14,27 +11,26 @@ export function useAuth() {
 export function AuthProvider({ children }: any) {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [userData, setUserData] = useState({});
 
   async function signUp(username: string, email: string, password: string, role: string) {
-    await auth.createUserWithEmailAndPassword(email, password);
-    if(auth.currentUser)
-    setDoc(doc(db, "users", auth.currentUser.uid), {
-      username,
-      email,
-      password,
-      role,
-      tasks: {
-    "BackLog": [
-      ],
-      "To-Do": [
-      ],
-      "In-Process": [
-      ],
-      "Completed": [
-      ]
-  },
-    });
+  //   await auth.createUserWithEmailAndPassword(email, password);
+  //   if(auth.currentUser)
+  //   setDoc(doc(db, "users", auth.currentUser.uid), {
+  //     username,
+  //     email,
+  //     password,
+  //     role,
+  //     tasks: {
+  //   "BackLog": [
+  //     ],
+  //     "To-Do": [
+  //     ],
+  //     "In-Process": [
+  //     ],
+  //     "Completed": [
+  //     ]
+  // },
+  //   });
   }
 
  async function login(username:string, password:string) {
@@ -42,7 +38,6 @@ export function AuthProvider({ children }: any) {
     "username": username,
     "password": password
   }
-  console.log(userDatas)
     const user: any = await api.login(userDatas)
     setCurrentUser(user.data._id)
 
