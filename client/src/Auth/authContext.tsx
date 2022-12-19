@@ -11,25 +11,8 @@ export function AuthProvider({ children }: any) {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  async function signUp(username: string, email: string, password: string, role: string) {
-  //   await auth.createUserWithEmailAndPassword(email, password);
-  //   if(auth.currentUser)
-  //   setDoc(doc(db, "users", auth.currentUser.uid), {
-  //     username,
-  //     email,
-  //     password,
-  //     role,
-  //     tasks: {
-  //   "BackLog": [
-  //     ],
-  //     "To-Do": [
-  //     ],
-  //     "In-Process": [
-  //     ],
-  //     "Completed": [
-  //     ]
-  // },
-  //   });
+  async function signUp(userData: any) {
+      await api.signUp(userData);
   }
 
  async function login(username:string, password:string) {

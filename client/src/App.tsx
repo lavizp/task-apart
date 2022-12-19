@@ -1,7 +1,7 @@
 import './app.css'
 import { ThemeProvider } from 'styled-components';
 import { DefaultTheme } from 'styled-components';
-import { useAuth } from './FIrebase/authContext';
+import { useAuth } from './Auth/authContext';
 import LoggedInRoutes from './routes/LoggedInRoutes';
 import SignedOutRoutes from './routes/SignedOutRoutes';
 

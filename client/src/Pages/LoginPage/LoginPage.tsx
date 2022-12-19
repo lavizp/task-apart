@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
-import { Background, Container, LeftContainer, RightContainer, Input, Button, LineText, Form} from '../styled-components/AuthStyles'
-import { useAuth } from '../FIrebase/authContext'
+import { Background, Container, LeftContainer, RightContainer, Input, Button, LineText, Form} from '../../styled-components/AuthStyles'
+import { useAuth } from '../../Auth/authContext'
 import { useNavigate } from 'react-router-dom';
 export default function LoginPage() {
   const navigate = useNavigate();

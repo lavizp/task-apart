@@ -5,8 +5,8 @@ import { Draggable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux'
 import { remove_task } from '../../Redux/taskSlice'
 
-import db from "../../FIrebase/firebase"
-import {useAuth} from "../../FIrebase/authContext"
+import db from "../../Auth/firebase"
+import {useAuth} from "../../Auth/authContext"
 import firebase from 'firebase/compat/app'
 import * as api from '../../api/index'
 import {Title, TitleContainer,TaskCatogery, TaskCompleted, TaskContainer, DetailsContainer} from './TaskStyles'

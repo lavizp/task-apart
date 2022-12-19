@@ -1,12 +1,6 @@
-import React,{useEffect} from 'react'
 import styled from 'styled-components'
-import { useAuth } from '../FIrebase/authContext'
-import { useNavigate } from 'react-router-dom'
-import Navbar from '../Components/Navbar/Navbar'
-import { MainContainer } from '../styled-components/MainContainer'
-import NavbarLeft from '../Components/NavbarLeft/NavbarLeft'
 
-const ProfilePageContainer = styled.div`
+export const ProfilePageContainer = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
@@ -37,7 +31,7 @@ const ProfilePageContainer = styled.div`
 
 `
 
-const Banner = styled.div`
+export const Banner = styled.div`
   width: "100%";
   margin: 20px;
   background-color: red;
@@ -52,7 +46,7 @@ const Banner = styled.div`
     object-fit: cover;
   }
 `
-const SaveButton = styled.button`
+export const SaveButton = styled.button`
 width: 100px;
 height:30px;
 color: white;
@@ -72,7 +66,7 @@ text-align: center;
 
   }
 `
-const Name = styled.h2`
+export const Name = styled.h2`
   color: white;
   font-size: 30px;
   position: absolute;
@@ -90,7 +84,7 @@ const Name = styled.h2`
     }
 
 `
-const LogOut = styled.button`
+export const LogOut = styled.button`
     width: 100px;
     height:30px;
     color: white;
@@ -107,7 +101,7 @@ const LogOut = styled.button`
 
       }
 `
-const DetailsContainer = styled.div`
+export const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -136,34 +130,3 @@ const DetailsContainer = styled.div`
   }
 
 `
-export default function ProfilePage() {
-  const {signOut} = useAuth();
-  const navigate = useNavigate();
-  const {currentUser} = useAuth();
- const signOutHandler  = async () => {
-    await signOut()
-    navigate("/login")
- }
- 
-  return (
-    <>
-    <Navbar/>
-    <MainContainer>
-    <NavbarLeft/>
-    <ProfilePageContainer>
-      <Banner>
-        <img src="https://assets-global.website-files.com/616e938268c8f0a92cb2b540/617806fb52d751a1fab3898a_youtube%20banner%20size%20guide.jpg" alt="banner" />
-      </Banner>
-      <img alt="profile" src='https://media-exp1.licdn.com/dms/image/C5603AQEyy_F49exDaQ/profile-displayphoto-shrink_800_800/0/1644306645936?e=1674691200&v=beta&t=h00G5kPe50cw3IJnh0rimzYXXoiMHd94jujwlJkuSHE'/>
-      <Name>Laviz Pandey</Name>
-      <SaveButton>Save</SaveButton>
-    <DetailsContainer>
-      <div><h3>Name:</h3><input type="text" placeholder='Laviz Pandey'/></div>
-      <div><h3>Role:</h3><input type="text" placeholder='Front-End-Developer'/></div>
-    <LogOut onClick={()=>signOutHandler()}>Log Out</LogOut>
-    </DetailsContainer>
-    </ProfilePageContainer>
-    </MainContainer>
-    </>
-  )
-}

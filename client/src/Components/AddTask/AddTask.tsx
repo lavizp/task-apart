@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { add_task } from '../../Redux/taskSlice'
-import { useAuth } from '../../FIrebase/authContext'
+import { useAuth } from '../../Auth/authContext'
 import {Overlay,InputContainer, Button, Select, Input, AddTaskContainer} from './AddTaskStyles'
 import * as api from '../../api/index'
 

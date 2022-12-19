@@ -44,5 +44,14 @@ export const getUsers = async(req,res)=>{
             
     }
 }
-
+export const getUser = async(req,res)=>{
+    try{
+        let {id} = req.params
+        let user = await UserModel.findById(id)
+        res.status(200).json(user)
+    }catch(e){
+        res.status(404).send(e)
+            
+    }
+}
 export default router
