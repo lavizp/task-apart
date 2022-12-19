@@ -15,10 +15,9 @@ export default function TaskPage() {
   const dispatch = useDispatch();
   const{currentUser} = useAuth();
   const {tasks} = useSelector((state: any)=> state.taskSlice)
-  const navigate = useNavigate();
     const[isAddTaskVisible, setAddTask] = useState(false)
     useEffect(()=>{
-      const dataFetch = async(userID: string)=>{
+      const dataFetch = async()=>{
         if(!currentUser) return
         let {data} = await api.getTasks(currentUser)
         dispatch(init_data(
@@ -27,7 +26,7 @@ export default function TaskPage() {
         )
       }
       if(currentUser){
-        dataFetch(currentUser);
+        dataFetch();
       }
     },[])
     function displayAddTask(){

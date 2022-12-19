@@ -48,9 +48,6 @@ export default function NavbarLeft() {
         <NavItem selected={isSelected[0]? "selected":""} onClick={()=>navigateToPage("")}>
             <SiHomebridge size={32}/>
         </NavItem>
-        <NavItem selected={isSelected[1]? "selected":""}  onClick={()=>navigateToPage("")}> 
-            <SiHomebridge size={32}/>
-        </NavItem>
         <NavItem selected={isSelected[2]? "selected":""} onClick={()=>navigateToPage("tasks")}>
             <TbSubtask size={32}/>
         </NavItem>
