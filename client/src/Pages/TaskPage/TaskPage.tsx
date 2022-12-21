@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import NavbarLeft from '../../Components/NavbarLeft/NavbarLeft'
 import Navbar from '../../Components/Navbar/Navbar'
@@ -7,7 +7,6 @@ import TasksContainer from '../../Components/TaskContainer/TasksContainer'
 import NotesTab from '../../Components/NotesTab/NotesTab'
 import AddTask from '../../Components/AddTask/AddTask'
 import { useAuth } from '../../Auth/authContext'
-import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { init_data } from '../../Redux/taskSlice'
 import * as api from '../../api/index'
