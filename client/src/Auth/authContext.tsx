@@ -26,6 +26,8 @@ export function AuthProvider({ children }: any) {
     localStorage.setItem("user", user.data._id)
   }
   function signOut() {
+    localStorage.removeItem("user")
+
     setCurrentUser(null);
   }
 
