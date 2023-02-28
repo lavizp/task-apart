@@ -13,7 +13,9 @@ export function AuthProvider({ children }: any) {
 
   
   async function signUp(userData: any) {
-      await api.signUp(userData);
+      let user: any = await api.signUp(userData);
+      if(!user) return;
+      login(user.username, user.password)
   }
 
  async function login(username:string, password:string) {
