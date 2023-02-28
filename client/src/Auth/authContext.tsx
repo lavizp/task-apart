@@ -11,6 +11,7 @@ export function AuthProvider({ children }: any) {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  
   async function signUp(userData: any) {
       await api.signUp(userData);
   }
@@ -22,13 +23,18 @@ export function AuthProvider({ children }: any) {
   }
     const user: any = await api.login(userDatas)
     setCurrentUser(user.data._id)
-
+    localStorage.setItem("user", user.data._id)
   }
   function signOut() {
     setCurrentUser(null);
   }
 
   useEffect(() => {
+    let userValue: any = localStorage.getItem("user")
+    if(userValue){
+      setCurrentUser(userValue)
+      return
+    }
     setCurrentUser(null)
   }, []);
 
