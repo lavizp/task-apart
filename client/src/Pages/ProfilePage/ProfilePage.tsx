@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState,useRef} from 'react'
 import { useAuth } from '../../Auth/authContext'
 import {User} from "../../Interfaces/User"
 import { useNavigate } from 'react-router-dom'
@@ -9,6 +9,11 @@ import {ProfilePageContainer, Banner, Name, SaveButton, DetailsContainer, LogOut
 import * as api from "../../api/index"
 
 export default function ProfilePage() {
+
+  const nameRef = useRef<HTMLInputElement>(null)
+  const roleRef = useRef<HTMLInputElement>(null)
+
+
   const {signOut} = useAuth();
   const navigate = useNavigate();
   const[user, setUser] = useState<User>();
@@ -16,6 +21,18 @@ export default function ProfilePage() {
  const signOutHandler  = async () => {
     await signOut()
     navigate("/login")
+ }
+ const saveButtonHander = async() => {
+    if(!nameRef.current?.value.length && !nameRef.current?.value.length){
+      return;
+    }
+    if(user?.name !== nameRef.current?.value){
+        await api.changeName(nameRef.current?.value || "")
+
+    }
+    if(user?.role !== roleRef.current?.value){
+      await api.changeName(roleRef.current?.value || "")
+  }
  }
  useEffect(()=>{
   const getData = async() =>{
@@ -36,10 +53,10 @@ export default function ProfilePage() {
       </Banner>
       <img alt="profile" src={user?.profileImage}/>
       <Name>{user?.name}</Name>
-      <SaveButton>Save</SaveButton>
+      <SaveButton onClick={()=> saveButtonHander()}>Save</SaveButton>
     <DetailsContainer>
-      <div><h3>Name:</h3><input type="text" placeholder={user?.name}/></div>
-      <div><h3>Role:</h3><input type="text" placeholder={user?.role}/></div>
+      <div><h3>Name:</h3><input type="text" placeholder={user?.name} ref={nameRef}/></div>
+      <div><h3>Role:</h3><input type="text" placeholder={user?.role} ref = {roleRef}/></div>
     <LogOut onClick={()=>signOutHandler()}>Log Out</LogOut>
     </DetailsContainer>
     </ProfilePageContainer>

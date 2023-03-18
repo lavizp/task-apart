@@ -12,3 +12,7 @@ export const getUserData = (id: string)=>axios.get(userUrl + id);
 export const login = (userData: any) => axios.post(userUrl + "login", userData)
 export const signUp = (userData: any) => axios.post(userUrl + "signup", userData)
 
+export const changeName = (name: string) => axios.put(userUrl + "changeName", name)
+export const changeRole = (role: string) => axios.put(userUrl + "changeName", role)
+
+
